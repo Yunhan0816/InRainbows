@@ -21,7 +21,7 @@ const router = new VueRouter({
     {
       path: "/therapy",
       name: "therapy",
-      component: () => import("./views/Therapist.vue")
+      component: () => import("./views/Therapists.vue")
     },
     {
       path: "/profile",
