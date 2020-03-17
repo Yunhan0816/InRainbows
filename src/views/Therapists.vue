@@ -2,20 +2,15 @@
   <v-container>
     <h2>Nearby Therapists</h2>
     <gmap />
-    <router-link :to="{ name: 'assault' }">
-      <v-layout align-center justify-center>
-        <v-btn
-          id="findassualt"
-          rounded
-          type="danger"
-          align="center"
-          @click="toggleLable"
-          x-large="true"
-        >
-          <a id="buttontext">Show Me Map of Therapist resources nearby</a>
-        </v-btn>
-      </v-layout>
-    </router-link>
+
+    <v-card height="150">
+      <v-footer absolute class="font-weight-medium">
+        <v-col class="text-center" cols="12">
+          {{ new Date().getFullYear() }} —
+          <strong>In Rainbows</strong>
+        </v-col>
+      </v-footer>
+    </v-card>
   </v-container>
 </template>
 <script>
