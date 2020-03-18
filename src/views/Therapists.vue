@@ -1,5 +1,6 @@
 <template>
   <v-container>
+    <Appbar />
     <h2>Nearby Therapists</h2>
     <gmap />
 
@@ -15,10 +16,12 @@
 </template>
 <script>
 import gmap from "../components/gmap";
+import Appbar from "../components/Appbar";
 export default {
   name: "Therapists",
   components: {
-    gmap
+    gmap,
+    Appbar
   }
 };
 </script>
