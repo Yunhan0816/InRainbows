@@ -53,17 +53,19 @@
             <!-- </v-card-actions> -->
           </v-card>
         </v-container>
-        <v-footer padless>
+        <!-- <v-footer padless>
           <v-col class="text-center" cols="12">
             {{ new Date().getFullYear() }} — <strong>In Rainbows</strong>
           </v-col>
-        </v-footer>
+        </v-footer> -->
+        <Footer />
       </v-parallax>
     </v-sheet>
   </v-card>
 </template>
 <script>
 import Appbar from "../components/Appbar";
+import Footer from "../components/footer";
 export default {
   props: {
     source: String
@@ -72,7 +74,8 @@ export default {
     drawer: null
   }),
   components: {
-    Appbar
+    Appbar,
+    Footer
   }
 };
 </script>

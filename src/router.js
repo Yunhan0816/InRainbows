@@ -10,7 +10,7 @@ const router = new VueRouter({
   routes: [
     {
       path: "/",
-      // name: "home",
+      name: "home",
       component: () => import("./views/Home.vue")
     },
     {
@@ -23,11 +23,7 @@ const router = new VueRouter({
       name: "therapy",
       component: () => import("./views/Therapists.vue")
     },
-    {
-      path: "/profile",
-      name: "profile",
-      component: () => import("./views/Profile.vue")
-    },
+
     {
       path: "/login",
       name: "login",

@@ -7,8 +7,11 @@
   >
     <v-app-bar-nav-icon></v-app-bar-nav-icon>
 
-    <v-toolbar-title>In Rainbows LGBTQ</v-toolbar-title>
-
+    <router-link :to="{ name: 'home' }">
+      <v-toolbar-title>
+        In Rainbows LGBT
+      </v-toolbar-title>
+    </router-link>
     <v-spacer></v-spacer>
 
     <v-btn id="directToTherapist">
