@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import gmapsInit from "/Users/huangyunhan/Documents/Projects/InRainbows/in-rainbows/gmaps.js";
+import gmapsInit from "../gmaps";
 export default {
   name: "gmap",
   async mounted() {
