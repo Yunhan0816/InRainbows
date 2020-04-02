@@ -5,8 +5,11 @@
 
     <v-row>
       <v-col cols="5">
-        <v-card class="mx-auto" max-width="400" tile> <TherapistList /> </v-card
-      ></v-col>
+        <v-card class="mx-auto" max-width="400" tile>
+          <TherapistList />
+        </v-card>
+      </v-col>
+
       <v-col cols="6">
         <gmap />
       </v-col>

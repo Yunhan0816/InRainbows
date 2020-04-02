@@ -12,9 +12,16 @@
   <v-layout wrap>-->
 
   <v-container grid-list-xl>
+    <v-card class="mx-auto" max-width="344" outlined>
+      <v-list-item-title class="headline mb-1">Therapists in Boston</v-list-item-title>
+    </v-card>
     <v-layout v-bind="binding">
       <v-flex v-for="p in paginatedData" :key="p.name">
-        <v-card dark color="primary">{{p.name.first}}</v-card>
+        <v-card dark color="primary">
+          <p>Name: {{p.name.first}} {{p.name.last}}</p>
+          <p>Title: {{p.titles[0]}}</p>
+          <!-- <p>Insurance: {{p.insurance}}</p> -->
+        </v-card>
       </v-flex>
     </v-layout>
     <button :disabled="pageNumber === 0" @click="prevPage">Previous</button>
