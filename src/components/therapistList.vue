@@ -14,7 +14,17 @@
   <v-container grid-list-xl>
     <v-layout v-bind="binding">
       <v-flex v-for="p in paginatedData" :key="p.name">
-        <v-card dark color="primary">{{p.name.first}}</v-card>
+        <!-- <v-card dark color="primary">{{p.name.first + " " + p.name.last}}</v-card> -->
+          <v-card
+            color="primary"
+            dark
+          >
+            <v-card-title class="headline">{{p.name.first + " " + p.name.last}}</v-card-title>
+            <v-card-subtitle>{{p.address.city + ", " + p.address.state}}</v-card-subtitle>
+            <v-card-actions>
+              <v-btn text>More Info</v-btn>
+            </v-card-actions>
+          </v-card>
       </v-flex>
     </v-layout>
     <button :disabled="pageNumber === 0" @click="prevPage">Previous</button>
