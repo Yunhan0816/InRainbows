@@ -17,10 +17,29 @@
     </v-card>
     <v-layout v-bind="binding">
       <v-flex v-for="p in paginatedData" :key="p.name">
-        <v-card dark color="primary">
-          <p>Name: {{p.name.first}} {{p.name.last}}</p>
-          <p>Title: {{p.titles[0]}}</p>
-          <!-- <p>Insurance: {{p.insurance}}</p> -->
+        <!-- <v-card dark color="primary">{{p.name.first + " " + p.name.last}}</v-card> -->
+        <v-card color="primary" dark>
+          <v-card-title class="headline">{{p.name.first + " " + p.name.last}}</v-card-title>
+          <v-card-subtitle>{{p.address.city + ", " + p.address.state}}</v-card-subtitle>
+          <v-card-text>
+            <b>Title:</b>
+            {{parseArr(p.titles)}}
+            <br />
+            <br />
+            <b>Insurance:</b>
+            {{parseArr(p.insurance)}}
+            <br />
+            <br />
+            <b>Pay By:</b>
+            {{parseArr(p.payBy)}}
+            <br />
+            <br />
+            <b>Communities:</b>
+            {{parseArr(p.communities)}}
+          </v-card-text>
+          <v-card-actions>
+            <v-btn text>More Info</v-btn>
+          </v-card-actions>
         </v-card>
       </v-flex>
     </v-layout>
@@ -29,20 +48,16 @@
     <button :disabled="pageNumber >= pageCount -1" @click="nextPage">Next</button>
   </v-container>
 </template>
+
+
 <script>
 import { db } from "@/main";
 export default {
   name: "TherapistList",
   async mounted() {
-    // this.getName();
     this.getTherapist();
   },
   props: {
-    // listData: {
-    //   type: Array,
-    //   required: false,
-    //   default: this.therapist
-    // },
     size: {
       type: Number,
       required: false,
@@ -52,11 +67,6 @@ export default {
   data() {
     return {
       therapist: [],
-      // name: [],
-      // insurance: [],
-      // issues: [],
-      // payBy: [],
-      // sexuality: []
       pageNumber: 0
     };
   },
@@ -72,20 +82,21 @@ export default {
       let therapist = [];
       snapshot.forEach(doc => {
         let appData = doc.data();
-        console.log(appData);
         appData.id = doc.id;
         therapist.push(appData);
       });
       this.therapist = therapist;
     },
-
-    async getName() {
-      let snapshot = await db.collection("therapists").get();
-      snapshot.forEach(doc => {
-        // let appData = doc.data().name;
-        this.name.push(doc.data().name);
-        // console.log(appData);
-      });
+    parseArr(arr) {
+      let res = "";
+      for (let i = 0; i < arr.length; i++) {
+        res = res + arr[i] + ", ";
+      }
+      if (res.length != 0) {
+        return res.substring(0, res.length - 2);
+      } else {
+        return "N/A";
+      }
     }
   },
   computed: {
@@ -107,22 +118,5 @@ export default {
       return binding;
     }
   }
-
-  // computed: {
-  //   displayTherapist() {
-  //     return;
-  //   }
-  // }
 };
-
-// var ref = firebase.database().ref("");
-// ref.orderByChild("height").limitToFirst(2).on("child_added", function(snapshot) {
-//   // This will be called exactly two times (unless there are less than two
-//   // dinosaurs in the Database).
-
-//   // It will also get fired again if one of the first two dinosaurs is
-//   // removed from the data set, as a new dinosaur will now be the second
-//   // shortest.
-//   console.log(snapshot.key);
-// });
 </script>
