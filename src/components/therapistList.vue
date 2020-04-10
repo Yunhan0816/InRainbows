@@ -1,20 +1,44 @@
 <template>
-  <!-- <v-card> -->
-  <!-- <v-flex d-flex>
-    <v-layout wrap>
-      <v-flex md4 v-for="item in therapist" :key="item.name">
-        <v-card class="card-container">{{item.name.first}}</v-card>
-      </v-flex>
-    </v-layout>
-  </v-flex>-->
-  <!-- -->
-  <!-- <v-flex>
-  <v-layout wrap>-->
-
   <v-container grid-list-xl>
-    <v-card class="mx-auto" max-width="344" outlined>
+    <v-card class="mx-auto" outlined>
       <v-list-item-title class="headline mb-1">Therapists in Boston</v-list-item-title>
     </v-card>
+    <v-card class="mx-auto" outlined>
+      <v-btn @click="showInsurance">Insurance</v-btn>
+      <v-card v-if="insurance==true">
+        <v-checkbox v-model="selected" label="BlueCross BlueShield"></v-checkbox>
+        <v-checkbox v-model="selected" label="Aetna"></v-checkbox>
+        <v-checkbox v-model="selected" label="Tufts"></v-checkbox>
+        <v-btn>Apply</v-btn>
+        <br />
+        <br />
+      </v-card>
+
+      <v-btn @click="showPayBy">Pay By</v-btn>
+      <v-card v-if="payby==true">
+        <v-checkbox v-model="selected" label="Cash"></v-checkbox>
+        <v-checkbox v-model="selected" label="Check"></v-checkbox>
+        <v-checkbox v-model="selected" label="Health Savings Account"></v-checkbox>
+        <v-checkbox v-model="selected" label="Visa"></v-checkbox>
+        <v-checkbox v-model="selected" label="Paypal"></v-checkbox>
+        <v-btn>Apply</v-btn>
+        <br />
+        <br />
+      </v-card>
+
+      <v-btn @click="showSpecialties">Specialties</v-btn>
+      <v-card v-if="specialties==true">
+        <v-checkbox v-model="selected" label="Anxiety"></v-checkbox>
+        <v-checkbox v-model="selected" label="Transgender"></v-checkbox>
+        <v-checkbox v-model="selected" label="Bipolar Disorder"></v-checkbox>
+        <v-checkbox v-model="selected" label="Relationship Issues"></v-checkbox>
+        <v-checkbox v-model="selected" label="Self-Harming"></v-checkbox>
+        <v-btn>Apply</v-btn>
+        <br />
+        <br />
+      </v-card>
+    </v-card>
+
     <v-layout v-bind="binding">
       <v-flex v-for="p in paginatedData" :key="p.name">
         <!-- <v-card dark color="primary">{{p.name.first + " " + p.name.last}}</v-card> -->
@@ -61,16 +85,28 @@ export default {
     size: {
       type: Number,
       required: false,
-      default: 10
+      default: 5
     }
   },
   data() {
     return {
       therapist: [],
-      pageNumber: 0
+      pageNumber: 0,
+      insurance: false,
+      payby: false,
+      specialties: false
     };
   },
   methods: {
+    showInsurance() {
+      this.insurance = !this.insurance;
+    },
+    showPayBy() {
+      this.payby = !this.payby;
+    },
+    showSpecialties() {
+      this.specialties = !this.specialties;
+    },
     nextPage() {
       this.pageNumber++;
     },

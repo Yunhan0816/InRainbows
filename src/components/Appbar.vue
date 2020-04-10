@@ -3,7 +3,7 @@
     <v-app-bar-nav-icon></v-app-bar-nav-icon>
 
     <router-link :to="{ name: 'home' }">
-      <v-toolbar-title>In Rainbows LGBT</v-toolbar-title>
+      <v-toolbar-title id="title">In Rainbows LGBT</v-toolbar-title>
     </router-link>
     <v-spacer></v-spacer>
 
@@ -18,3 +18,9 @@ export default {
   name: "Appbar"
 };
 </script>
+<style scoped>
+#title {
+  font-size: 30px;
+  color: navy;
+}
+</style>
