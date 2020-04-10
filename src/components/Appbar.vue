@@ -6,11 +6,6 @@
       <v-toolbar-title id="title">In Rainbows LGBT</v-toolbar-title>
     </router-link>
     <v-spacer></v-spacer>
-
-    <v-btn id="directToTherapist">
-      <span>Therapists</span>
-      <v-icon>mdi-history</v-icon>
-    </v-btn>
   </v-app-bar>
 </template>
 <script scoped>

@@ -14,20 +14,20 @@
         <gmap />
       </v-col>
     </v-row>
-    <Footer />
+    <!-- <Footer /> -->
   </v-container>
 </template>
 <script>
 import gmap from "../components/gmap";
 import Appbar from "../components/Appbar";
-import Footer from "../components/footer";
+// import Footer from "../components/footer";
 import TherapistList from "../components/therapistList";
 export default {
   name: "Therapists",
   components: {
     gmap,
     Appbar,
-    Footer,
+    // Footer,
     TherapistList
   }
 };

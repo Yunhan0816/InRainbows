@@ -1,6 +1,6 @@
   
 <template>
-  <v-container>
+  <v-container id="map">
     <div class="googleMap" />
   </v-container>
 </template>
@@ -68,5 +68,8 @@ body {
 .container {
   height: 100vh;
   width: 100wh;
+}
+#map {
+  max-height: 400px;
 }
 </style>
