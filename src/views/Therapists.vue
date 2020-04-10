@@ -10,8 +10,9 @@
         <!-- </v-card> -->
       </v-col>
 
-      <v-col cols="6">
+      <v-col cols="7">
         <gmap />
+        <moreInfo />
       </v-col>
     </v-row>
     <!-- <Footer /> -->
@@ -22,11 +23,13 @@ import gmap from "../components/gmap";
 import Appbar from "../components/Appbar";
 // import Footer from "../components/footer";
 import TherapistList from "../components/therapistList";
+import moreInfo from "../components/moreInfo";
 export default {
   name: "Therapists",
   components: {
     gmap,
     Appbar,
+    moreInfo,
     // Footer,
     TherapistList
   }

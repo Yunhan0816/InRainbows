@@ -48,7 +48,7 @@
           <v-card-text>
             <b>Title:</b>
             {{parseArr(p.titles)}}
-            <br />
+            <!-- <br />
             <br />
             <b>Insurance:</b>
             {{parseArr(p.insurance)}}
@@ -59,7 +59,7 @@
             <br />
             <br />
             <b>Communities:</b>
-            {{parseArr(p.communities)}}
+            {{parseArr(p.communities)}}-->
           </v-card-text>
           <v-card-actions>
             <v-btn text>More Info</v-btn>
@@ -85,7 +85,7 @@ export default {
     size: {
       type: Number,
       required: false,
-      default: 5
+      default: 4
     }
   },
   data() {
