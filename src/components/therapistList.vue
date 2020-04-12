@@ -9,7 +9,7 @@
         <v-checkbox v-model="selected" label="BlueCross BlueShield"></v-checkbox>
         <v-checkbox v-model="selected" label="Aetna"></v-checkbox>
         <v-checkbox v-model="selected" label="Tufts"></v-checkbox>
-        <v-btn>Apply</v-btn>
+        <v-btn @click="showInsurance">Apply</v-btn>
         <br />
         <br />
       </v-card>
@@ -21,7 +21,7 @@
         <v-checkbox v-model="selected" label="Health Savings Account"></v-checkbox>
         <v-checkbox v-model="selected" label="Visa"></v-checkbox>
         <v-checkbox v-model="selected" label="Paypal"></v-checkbox>
-        <v-btn>Apply</v-btn>
+        <v-btn @click="showPayBy">Apply</v-btn>
         <br />
         <br />
       </v-card>
@@ -33,7 +33,7 @@
         <v-checkbox v-model="selected" label="Bipolar Disorder"></v-checkbox>
         <v-checkbox v-model="selected" label="Relationship Issues"></v-checkbox>
         <v-checkbox v-model="selected" label="Self-Harming"></v-checkbox>
-        <v-btn>Apply</v-btn>
+        <v-btn @click="showSpecialties">Apply</v-btn>
         <br />
         <br />
       </v-card>
