@@ -6,13 +6,13 @@
     <v-row>
       <v-col cols="5" width="100%" height="100%" tile>
         <!-- <v-card class="mx-auto" tile> -->
-        <TherapistList />
+        <TherapistList v-on:messageFromChild="childMessageReceived"/>
         <!-- </v-card> -->
       </v-col>
 
       <v-col cols="7">
         <gmap />
-        <moreInfo />
+        <moreInfo v-on:/>
       </v-col>
     </v-row>
     <!-- <Footer /> -->
@@ -32,6 +32,11 @@ export default {
     moreInfo,
     // Footer,
     TherapistList
+  },
+  methods: {
+    childMessageReceived(info){
+      console.log(info)
+    }
   }
 };
 </script>

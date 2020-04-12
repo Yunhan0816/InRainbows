@@ -62,7 +62,7 @@
             {{parseArr(p.communities)}}-->
           </v-card-text>
           <v-card-actions>
-            <v-btn text>More Info</v-btn>
+            <v-btn v-on:click="moreInfo(p)">More Info</v-btn>
           </v-card-actions>
         </v-card>
       </v-flex>
@@ -133,6 +133,9 @@ export default {
       } else {
         return "N/A";
       }
+    },
+    moreInfo(therapist) {
+      this.$emit("messageFromChild", therapist)
     }
   },
   computed: {
