@@ -12,7 +12,7 @@
 
       <v-col cols="7">
         <gmap />
-        <moreInfo v-on:/>
+        <moreInfo :message="therapist"/>
       </v-col>
     </v-row>
     <!-- <Footer /> -->
@@ -24,7 +24,11 @@ import Appbar from "../components/Appbar";
 // import Footer from "../components/footer";
 import TherapistList from "../components/therapistList";
 import moreInfo from "../components/moreInfo";
+
 export default {
+  // provide:{
+  //   therapist
+  // },
   name: "Therapists",
   components: {
     gmap,
@@ -33,9 +37,15 @@ export default {
     // Footer,
     TherapistList
   },
+  data (){
+    return{
+      therapist: "test"
+    }
+  },
   methods: {
     childMessageReceived(info){
-      console.log(info)
+      console.log(info);
+      this.therapist = info
     }
   }
 };

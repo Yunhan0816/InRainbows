@@ -60,7 +60,7 @@
             <br />
             <b>Communities:</b>
             {{parseArr(p.communities)}}-->
-          </v-card-text>
+            </v-card-text>
           <v-card-actions>
             <v-btn v-on:click="moreInfo(p)">More Info</v-btn>
           </v-card-actions>
