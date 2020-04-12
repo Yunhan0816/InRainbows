@@ -20,6 +20,10 @@
         {{parseArr(message.communities)}}
         <br />
         <br />
+        <b>Sexualities:</b>
+        {{parseArr(message.sexuality)}}
+        <br />
+        <br />
         <b>Blurb:</b>
         {{message.blurb}}
       </v-card-text>
@@ -32,14 +36,10 @@ export default {
   props: {
     message: Object
   },
-  mounted(){
+  mounted() {
     console.log(this.message);
   },
   methods: {
-    // displayInfo() {
-    //   console.log(this.message);
-    //   console.log("I GOT CALLED")
-    // },
     parseArr(arr) {
       let res = "";
       for (let i = 0; i < arr.length; i++) {
@@ -50,12 +50,12 @@ export default {
       } else {
         return "N/A";
       }
-    },
-  },
+    }
+  }
   // watch: {
   //   'message': function() {
   //     this.displayInfo();
   //   }
   // }
-}
+};
 </script>
