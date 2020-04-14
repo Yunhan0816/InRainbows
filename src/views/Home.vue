@@ -19,11 +19,11 @@
 
         <br />
 
-        <v-container style="height: 800px;">
+        <v-container style="height: 800px; max-width: 700px">
           <v-card class="mx-auto">
             <v-list-item three-line>
               <v-list-item-content>
-                <div class="overline mb-3">I want to find..</div>
+                <div class="overline mb-3"></div>
                 <v-list-item-title
                   class="headline mb-1"
                 >Connect with LGBTQ+ friendly mental health resources</v-list-item-title>
@@ -32,17 +32,18 @@
 
               <!-- <v-list-item-avatar tile size="80" color="grey"></v-list-item-avatar> -->
             </v-list-item>
-            <!-- <v-card-actions> -->
-            <!-- <router-link :to="{ name: 'events' }">
-              <v-btn id="findevents">
-                <a id="buttontext">Events and Communities</a>
-              </v-btn>
-            </router-link>-->
-
-            <router-link :to="{ name: 'therapy' }">
-              <v-btn id="findevents">
-                <a id="buttontext">Show me Therapists in Boston</a>
-              </v-btn>
+            <div class="text">
+              <b>Show me...</b>
+              <b id="therapist">Therapist</b>
+              <br />
+              <br />
+              <b>In...</b>
+              <b id="boston">Boston</b>
+              <br />
+              <br />
+            </div>
+            <router-link :to="{ name: 'therapy' }" id="gobutton">
+              <v-btn class="gobutton">Go</v-btn>
             </router-link>
             <!-- </v-card-actions> -->
           </v-card>
@@ -73,3 +74,24 @@ export default {
   }
 };
 </script>
+<style scoped>
+.headline {
+  font-weight: bold;
+  color: #3b3b3b;
+}
+.text {
+  text-align: left;
+  padding: 30px;
+  font-size: 20px;
+}
+#gobutton {
+  color: rgb(54, 133, 236);
+  text-decoration: none;
+}
+#therapist {
+  color: rgb(54, 133, 236);
+}
+#boston {
+  color: rgb(54, 133, 236);
+}
+</style>
