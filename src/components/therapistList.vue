@@ -58,9 +58,12 @@
         </v-card>
       </v-flex>
     </v-layout>
-    <button :disabled="pageNumber === 0" @click="prevPage">Previous</button>
-    <v-spacer></v-spacer>
-    <button :disabled="pageNumber >= pageCount -1" @click="nextPage">Next</button>
+    <button :disabled="pageNumber === 0" @click="prevPage">
+      <v-icon>fas fa-arrow-left</v-icon>
+    </button>
+    <button :disabled="pageNumber >= pageCount -1" @click="nextPage" style="float:right">
+      <v-icon>fas fa-arrow-right</v-icon>
+    </button>
   </v-container>
 </template>
 
