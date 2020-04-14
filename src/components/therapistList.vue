@@ -3,7 +3,7 @@
     <!-- <v-card class="mx-auto" outlined>
       <v-list-item-title class="headline mb-1">Therapists in Boston</v-list-item-title>
     </v-card>-->
-    <h2>Therapists in Boston</h2>
+    <h2 style="color:#3b3b3b ">Therapists in Boston</h2>
     <v-card class="mx-auto" outlined id="filtercard">
       <v-btn rounded @click="showInsurance">Insurance</v-btn>
       <v-card v-if="insurance==true">
