@@ -5,7 +5,7 @@
     </v-card>-->
     <h2 style="color:#3b3b3b ">Therapists in Boston</h2>
     <v-card class="mx-auto" outlined id="filtercard">
-      <v-btn rounded @click="showInsurance">Insurance</v-btn>
+      <v-btn rounded @click="showInsurance" class="filterbutton">Insurance</v-btn>
       <v-card v-if="insurance==true">
         <v-checkbox v-model="selected" label="BlueCross BlueShield"></v-checkbox>
         <v-checkbox v-model="selected" label="Aetna"></v-checkbox>
@@ -15,7 +15,7 @@
         <br />
       </v-card>
 
-      <v-btn rounded @click="showPayBy">Pay By</v-btn>
+      <v-btn rounded @click="showPayBy" class="filterbutton">Pay By</v-btn>
       <v-card v-if="payby==true">
         <v-checkbox v-model="selected" label="Cash"></v-checkbox>
         <v-checkbox v-model="selected" label="Check"></v-checkbox>
@@ -27,7 +27,7 @@
         <br />
       </v-card>
 
-      <v-btn rounded @click="showSpecialties">Specialties</v-btn>
+      <v-btn rounded @click="showSpecialties" class="filterbutton">Specialties</v-btn>
       <v-card v-if="specialties==true">
         <v-checkbox v-model="selected" label="Anxiety"></v-checkbox>
         <v-checkbox v-model="selected" label="Transgender"></v-checkbox>
@@ -159,6 +159,9 @@ export default {
   color: black;
 }
 .normaltext {
+  color: #3b3b3b;
+}
+.filterbutton {
   color: #3b3b3b;
 }
 </style>

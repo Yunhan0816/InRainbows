@@ -19,7 +19,7 @@
 
         <br />
 
-        <v-container style="height: 800px; max-width: 700px">
+        <v-container class="card" style="height: 800px; max-width: 700px">
           <v-card class="mx-auto">
             <v-list-item three-line>
               <v-list-item-content>
@@ -43,7 +43,9 @@
               <br />
             </div>
             <router-link :to="{ name: 'therapy' }" id="gobutton">
-              <v-btn class="gobutton">Go</v-btn>
+              <!-- <v-btn class="gobutton">Go</v-btn> -->
+              Go
+              <v-icon>fas fa-arrow-right</v-icon>
             </router-link>
             <!-- </v-card-actions> -->
           </v-card>
@@ -53,9 +55,9 @@
             {{ new Date().getFullYear() }} — <strong>In Rainbows</strong>
           </v-col>
         </v-footer>-->
-        <Footer />
       </v-parallax>
     </v-sheet>
+    <Footer />
   </v-card>
 </template>
 <script>
@@ -87,6 +89,8 @@ export default {
 #gobutton {
   color: rgb(54, 133, 236);
   text-decoration: none;
+  padding: 200px 400px 40px 40px;
+  font-weight: bold;
 }
 #therapist {
   color: rgb(54, 133, 236);
