@@ -21,12 +21,52 @@ export default {
         map.setCenter(results[0].geometry.location);
         map.fitBounds(results[0].geometry.viewport);
       });
+
+      // function geocodeAddress(geocoder, resultsMap, addressString) {
+      //   // var address = document.getElementById("address").value;
+      //   geocoder.geocode({ address: addressString }, function(results, status) {
+      //     if (status === "OK") {
+      //       resultsMap.setCenter(results[0].geometry.location);
+      //       var marker = new google.maps.Marker({
+      //         map: resultsMap,
+      //         position: results[0].geometry.location
+      //       });
+      //       marker.location;
+      //     } else {
+      //       alert(
+      //         "Geocode was not successful for the following reason: " + status
+      //       );
+      //     }
+      //   });
+      // }
+
+      // console.log(
+      //   "TRY THESE COORDS:",
+      //   geocodeAddress(geocoder, map, "1079 Commonwealth Ave., Boston MA 02215")
+      // );
       const location = [
         { lat: 42.3348, lng: -71.0733 },
         { lat: 42.362, lng: -71.06 },
         { lat: 42.3361, lng: -71.1075 },
         { lat: 42.3397, lng: -71.1049 }
       ];
+
+      geocoder.geocode(
+        { address: "1079 Commonwealth Ave., Boston MA 02215" },
+        function(results, status) {
+          if (status === "OK") {
+            map.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+              map: map,
+              position: results[0].geometry.location
+            });
+            marker.location;
+          } else {
+            alert("shits messed up");
+          }
+        }
+      );
+
       const marker1 = new google.maps.Marker({
         position: location[0],
         map: map

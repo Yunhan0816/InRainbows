@@ -1,31 +1,34 @@
 <template>
   <v-container>
-    <v-card color="primary" dark>
+    <v-card color="#dedede" dark>
       <v-card-title class="headline">{{message.name.first + " " + message.name.last}}</v-card-title>
-      <v-card-subtitle>{{message.address.city + ", " + message.address.state}}</v-card-subtitle>
+      <v-card-subtitle>
+        <b>Location:</b>
+        <div
+          class="normaltext"
+        >{{message.address.street+ ", "+ message.address.city + ", " + message.address.state + " " + message.address.zipcode}}</div>
+      </v-card-subtitle>
       <v-card-text>
         <b>Title:</b>
-        {{parseArr(message.titles)}}
-        <br />
+        <div class="normaltext">{{parseArr(message.titles)}}</div>
         <br />
         <b>Insurance:</b>
-        {{parseArr(message.insurance)}}
-        <br />
+        <div class="normaltext">{{parseArr(message.insurance)}}</div>
         <br />
         <b>Pay By:</b>
-        {{parseArr(message.payBy)}}
-        <br />
+        <div class="normaltext">{{parseArr(message.payBy)}}</div>
         <br />
         <b>Communities:</b>
-        {{parseArr(message.communities)}}
+        <div class="normaltext">{{parseArr(message.communities)}}</div>
         <br />
+        <b>Ages:</b>
+        <div class="normaltext">{{parseArr(message.ages)}}</div>
         <br />
         <b>Sexualities:</b>
-        {{parseArr(message.sexuality)}}
-        <br />
+        <div class="normaltext">{{parseArr(message.sexuality)}}</div>
         <br />
         <b>Blurb:</b>
-        {{message.blurb}}
+        <div class="normaltext">{{message.blurb}}</div>
       </v-card-text>
     </v-card>
   </v-container>
@@ -59,3 +62,16 @@ export default {
   // }
 };
 </script>
+<style scoped>
+.headline {
+  font-family: "Lato";
+  color: black;
+  font-weight: bold;
+}
+.normaltext {
+  color: black;
+}
+b {
+  color: #249df0;
+}
+</style>
