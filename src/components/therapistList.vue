@@ -4,7 +4,10 @@
       <v-list-item-title class="headline mb-1">Therapists in Boston</v-list-item-title>
     </v-card>-->
     <h2 style="color:#3b3b3b ">Therapists in Boston</h2>
+
     <v-card class="mx-auto" outlined id="filtercard">
+      <br />
+
       <v-btn rounded @click="showInsurance" class="filterbutton"
         >Insurance</v-btn
       >
@@ -20,36 +23,37 @@
         <br />
       </v-card>
 
+      <!-- PAYBY filter -->
       <v-btn rounded @click="showPayBy" class="filterbutton">Pay By</v-btn>
       <v-card v-if="payby == true">
-        <v-checkbox v-model="selected" label="Cash"></v-checkbox>
-        <v-checkbox v-model="selected" label="Check"></v-checkbox>
-        <v-checkbox
-          v-model="selected"
-          label="Health Savings Account"
-        ></v-checkbox>
-        <v-checkbox v-model="selected" label="Visa"></v-checkbox>
-        <v-checkbox v-model="selected" label="Paypal"></v-checkbox>
-        <v-btn rounded @click="showPayBy">Apply</v-btn>
-        <br />
-        <br />
+        <div class="col">
+          <div v-for="pay in paybyList" :key="pay">
+            <input
+              type="checkbox"
+              :id="pay"
+              :value="pay"
+              v-model="checkedPayby"
+            />
+            <label :for="pay">{{ pay }}</label>
+          </div>
+          <br />
+          <span>You have chosen: {{ checkedPayby }}</span>
+          <br />
+          <v-btn rounded @click="applyPayby">Apply</v-btn>
+        </div>
+        <div class="col">
+          <strong>Therapists in chosen Payby(s)</strong>
+        </div>
       </v-card>
 
+      <!-- COMMUNITY filter -->
       <v-btn rounded @click="showCommunities" class="filterbutton"
         >Communities</v-btn
       >
-      <v-card v-if="communities == true">
-        <!-- <v-checkbox v-model="selected" label="Queer Allied"></v-checkbox>
-        <v-checkbox v-model="selected" label="Transgender Allied"></v-checkbox>
-        <v-checkbox v-model="selected" label="Bisexual Allied"></v-checkbox>
-        <v-checkbox v-model="selected" label="Gay Allied"></v-checkbox>
-        <v-checkbox v-model="selected" label="Lesbian Allied"></v-checkbox>
-        <v-checkbox v-model="selected" label="HIV / AIDS Allied"></v-checkbox>
+      <br />
+      <br />
 
-        <v-btn rounded @click="applyCommunities">Apply</v-btn>
-        <br />
-        <br />
-      </v-card> -->
+      <v-card v-if="communities == true">
         <div class="col">
           <div v-for="com in communityList" :key="com">
             <input
@@ -67,14 +71,6 @@
         </div>
         <div class="col">
           <strong>Therapists in chosen communitie(s)</strong>
-
-          <!-- <ul>
-            <li>Test</li>
-            <li v-for="t in selectedTherapist" :key="t">
-              communities: {{ t.communities }} | name:
-              {{ t.name.first }}
-            </li>
-          </ul> -->
         </div>
       </v-card>
     </v-card>
@@ -130,6 +126,7 @@ export default {
   },
   data() {
     return {
+      paybyList: ["Cash", "Check", "Visa", "PayPal", "Health Savings Account"],
       communityList: [
         "Queer Allied",
         "Transgender Allied",
@@ -144,6 +141,7 @@ export default {
       payby: false,
       communities: false,
       checkedCommunities: [],
+      checkedPayby: [],
     };
   },
   methods: {
@@ -156,14 +154,25 @@ export default {
     showCommunities() {
       this.communities = !this.communities;
     },
-    applyCommunities() {
-      if (this.selectedTherapist != []) {
-        this.therapist = this.selectedTherapist;
+    applyPayby() {
+      if (this.selectedTherapistP != []) {
+        this.therapist = this.selectedTherapistP;
       }
-      if (this.selectedTherapist == []) {
+      if (this.selectedTherapistP == []) {
         console.log("empty list");
       }
       console.log(this.therapist);
+      this.payby = !this.payby;
+    },
+    applyCommunities() {
+      if (this.selectedTherapistC != []) {
+        this.therapist = this.selectedTherapistC;
+      }
+      if (this.selectedTherapistC == []) {
+        console.log("empty list");
+      }
+      console.log(this.therapist);
+      this.communities = !this.communities;
     },
     nextPage() {
       this.pageNumber++;
@@ -197,7 +206,7 @@ export default {
     },
   },
   computed: {
-    selectedTherapist: function() {
+    selectedTherapistC: function() {
       return this.therapist.filter(function(therapy) {
         let intersection = therapy.communities.filter((x) =>
           this.checkedCommunities.includes(x)
@@ -210,24 +219,21 @@ export default {
           console.log("not empty!");
           return therapy;
         }
-        // let result = therapy.communities.includes(this.checkedCommunities);
-        // console.log(result);
-        // return result;
-        // let result = [];
-        // for (let i = 0; i < this.checkedCommunities.length; i++) {
-        //   result.push({
-        //     key: therapy,
-        //     value: therapy.communities.includes(this.checkedCommunities[i]),
-        //   });
-        // }
-        // let selectedT = [];
-        // for (let i = 0; i < result.length; i++) {
-        //   if (result[i].value == true) {
-        //     selectedT.push(result[i].key);
-        //   }
-        // }
-        // console.log(selectedT);
-        // return selectedT;
+      }, this);
+    },
+    selectedTherapistP: function() {
+      return this.therapist.filter(function(therapy) {
+        let intersection = therapy.payBy.filter((x) =>
+          this.checkedPayby.includes(x)
+        );
+        console.log(intersection);
+        if (intersection.length == 0) {
+          console.log("empty!");
+          console.log(therapy);
+        } else {
+          console.log("not empty!");
+          return therapy;
+        }
       }, this);
     },
 
@@ -261,5 +267,8 @@ export default {
 }
 .filterbutton {
   color: #3b3b3b;
+}
+.mx-auto {
+  text-align: center;
 }
 </style>
