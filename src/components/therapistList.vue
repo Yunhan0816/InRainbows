@@ -8,19 +8,29 @@
     <v-card class="mx-auto" outlined id="filtercard">
       <br />
 
+      <!-- INSURANCE filter -->
       <v-btn rounded @click="showInsurance" class="filterbutton"
         >Insurance</v-btn
       >
       <v-card v-if="insurance == true">
-        <v-checkbox
-          v-model="selected"
-          label="BlueCross BlueShield"
-        ></v-checkbox>
-        <v-checkbox v-model="selected" label="Aetna"></v-checkbox>
-        <v-checkbox v-model="selected" label="Tufts"></v-checkbox>
-        <v-btn rounded @click="showInsurance">Apply</v-btn>
-        <br />
-        <br />
+        <div class="col">
+          <div v-for="ins in insuranceList" :key="ins">
+            <input
+              type="checkbox"
+              :id="ins"
+              :value="ins"
+              v-model="checkedInsurance"
+            />
+            <label :for="ins">{{ ins }}</label>
+          </div>
+          <br />
+          <span>You have chosen: {{ checkedInsurance }}</span>
+          <br />
+          <v-btn rounded @click="applyInsurance">Apply</v-btn>
+        </div>
+        <div class="col">
+          <strong>Therapists in chosen Insurance(s)</strong>
+        </div>
       </v-card>
 
       <!-- PAYBY filter -->
@@ -135,6 +145,16 @@ export default {
         "Bisexual Allied",
         "HIV / AIDS Allied",
       ],
+      insuranceList: [
+        "BlueCross BlueShield",
+        "Cigna",
+        "Aetna",
+        "Anthem",
+        "Tufts",
+        "Tufts PPO",
+        "Aetna PPO",
+        "Harvard Pilgrim",
+      ],
       therapist: [],
       pageNumber: 0,
       insurance: false,
@@ -142,6 +162,7 @@ export default {
       communities: false,
       checkedCommunities: [],
       checkedPayby: [],
+      checkedInsurance: [],
     };
   },
   methods: {
@@ -153,6 +174,16 @@ export default {
     },
     showCommunities() {
       this.communities = !this.communities;
+    },
+    applyInsurance() {
+      if (this.selectedTherapistI != []) {
+        this.therapist = this.selectedTherapistI;
+      }
+      if (this.selectedTherapistI == []) {
+        console.log("empty list");
+      }
+      console.log(this.therapist);
+      this.insurance = !this.insurance;
     },
     applyPayby() {
       if (this.selectedTherapistP != []) {
@@ -225,6 +256,21 @@ export default {
       return this.therapist.filter(function(therapy) {
         let intersection = therapy.payBy.filter((x) =>
           this.checkedPayby.includes(x)
+        );
+        console.log(intersection);
+        if (intersection.length == 0) {
+          console.log("empty!");
+          console.log(therapy);
+        } else {
+          console.log("not empty!");
+          return therapy;
+        }
+      }, this);
+    },
+    selectedTherapistI: function() {
+      return this.therapist.filter(function(therapy) {
+        let intersection = therapy.insurance.filter((x) =>
+          this.checkedInsurance.includes(x)
         );
         console.log(intersection);
         if (intersection.length == 0) {
