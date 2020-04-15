@@ -62,17 +62,19 @@
           </div>
           <br />
           <span>You have chosen: {{ checkedCommunities }}</span>
+          <br />
+          <v-btn rounded @click="applyCommunities">Apply</v-btn>
         </div>
         <div class="col">
           <strong>Therapists in chosen communitie(s)</strong>
 
-          <ul>
+          <!-- <ul>
             <li>Test</li>
             <li v-for="t in selectedTherapist" :key="t">
               communities: {{ t.communities }} | name:
               {{ t.name.first }}
             </li>
-          </ul>
+          </ul> -->
         </div>
       </v-card>
     </v-card>
@@ -154,11 +156,15 @@ export default {
     showCommunities() {
       this.communities = !this.communities;
     },
-    // applyCommunities() {
-    //   let communityItems = [];
-
-    //   this.checkedCommunities = ;
-    // },
+    applyCommunities() {
+      if (this.selectedTherapist != []) {
+        this.therapist = this.selectedTherapist;
+      }
+      if (this.selectedTherapist == []) {
+        console.log("empty list");
+      }
+      console.log(this.therapist);
+    },
     nextPage() {
       this.pageNumber++;
     },
@@ -191,17 +197,37 @@ export default {
     },
   },
   computed: {
-    // selectedTherapist() {
-    //   return this.therapist.filter((j) =>
-    //     this.checkedCommunities.includes(j.communities)
-    //   );
     selectedTherapist: function() {
       return this.therapist.filter(function(therapy) {
-        let result = [];
-        for (let i = 0; i < this.checkedCommunities.length; i++) {
-          result.push(therapy.communities.includes(this.checkedCommunities[i]));
+        let intersection = therapy.communities.filter((x) =>
+          this.checkedCommunities.includes(x)
+        );
+        console.log(intersection);
+        if (intersection.length == 0) {
+          console.log("empty!");
+          console.log(therapy);
+        } else {
+          console.log("not empty!");
+          return therapy;
         }
-        return result;
+        // let result = therapy.communities.includes(this.checkedCommunities);
+        // console.log(result);
+        // return result;
+        // let result = [];
+        // for (let i = 0; i < this.checkedCommunities.length; i++) {
+        //   result.push({
+        //     key: therapy,
+        //     value: therapy.communities.includes(this.checkedCommunities[i]),
+        //   });
+        // }
+        // let selectedT = [];
+        // for (let i = 0; i < result.length; i++) {
+        //   if (result[i].value == true) {
+        //     selectedT.push(result[i].key);
+        //   }
+        // }
+        // console.log(selectedT);
+        // return selectedT;
       }, this);
     },
 
