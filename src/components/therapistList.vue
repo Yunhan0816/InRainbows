@@ -5,9 +5,14 @@
     </v-card>-->
     <h2 style="color:#3b3b3b ">Therapists in Boston</h2>
     <v-card class="mx-auto" outlined id="filtercard">
-      <v-btn rounded @click="showInsurance" class="filterbutton">Insurance</v-btn>
-      <v-card v-if="insurance==true">
-        <v-checkbox v-model="selected" label="BlueCross BlueShield"></v-checkbox>
+      <v-btn rounded @click="showInsurance" class="filterbutton"
+        >Insurance</v-btn
+      >
+      <v-card v-if="insurance == true">
+        <v-checkbox
+          v-model="selected"
+          label="BlueCross BlueShield"
+        ></v-checkbox>
         <v-checkbox v-model="selected" label="Aetna"></v-checkbox>
         <v-checkbox v-model="selected" label="Tufts"></v-checkbox>
         <v-btn rounded @click="showInsurance">Apply</v-btn>
@@ -16,10 +21,13 @@
       </v-card>
 
       <v-btn rounded @click="showPayBy" class="filterbutton">Pay By</v-btn>
-      <v-card v-if="payby==true">
+      <v-card v-if="payby == true">
         <v-checkbox v-model="selected" label="Cash"></v-checkbox>
         <v-checkbox v-model="selected" label="Check"></v-checkbox>
-        <v-checkbox v-model="selected" label="Health Savings Account"></v-checkbox>
+        <v-checkbox
+          v-model="selected"
+          label="Health Savings Account"
+        ></v-checkbox>
         <v-checkbox v-model="selected" label="Visa"></v-checkbox>
         <v-checkbox v-model="selected" label="Paypal"></v-checkbox>
         <v-btn rounded @click="showPayBy">Apply</v-btn>
@@ -27,16 +35,45 @@
         <br />
       </v-card>
 
-      <v-btn rounded @click="showSpecialties" class="filterbutton">Specialties</v-btn>
-      <v-card v-if="specialties==true">
-        <v-checkbox v-model="selected" label="Anxiety"></v-checkbox>
-        <v-checkbox v-model="selected" label="Transgender"></v-checkbox>
-        <v-checkbox v-model="selected" label="Bipolar Disorder"></v-checkbox>
-        <v-checkbox v-model="selected" label="Relationship Issues"></v-checkbox>
-        <v-checkbox v-model="selected" label="Self-Harming"></v-checkbox>
-        <v-btn rounded @click="showSpecialties">Apply</v-btn>
+      <v-btn rounded @click="showCommunities" class="filterbutton"
+        >Communities</v-btn
+      >
+      <v-card v-if="communities == true">
+        <!-- <v-checkbox v-model="selected" label="Queer Allied"></v-checkbox>
+        <v-checkbox v-model="selected" label="Transgender Allied"></v-checkbox>
+        <v-checkbox v-model="selected" label="Bisexual Allied"></v-checkbox>
+        <v-checkbox v-model="selected" label="Gay Allied"></v-checkbox>
+        <v-checkbox v-model="selected" label="Lesbian Allied"></v-checkbox>
+        <v-checkbox v-model="selected" label="HIV / AIDS Allied"></v-checkbox>
+
+        <v-btn rounded @click="applyCommunities">Apply</v-btn>
         <br />
         <br />
+      </v-card> -->
+        <div class="col">
+          <div v-for="com in communityList" :key="com">
+            <input
+              type="checkbox"
+              :id="com"
+              :value="com"
+              v-model="checkedCommunities"
+            />
+            <label :for="com">{{ com }}</label>
+          </div>
+          <br />
+          <span>You have chosen: {{ checkedCommunities }}</span>
+        </div>
+        <div class="col">
+          <strong>Therapists in chosen communitie(s)</strong>
+
+          <ul>
+            <li>Test</li>
+            <li v-for="t in selectedTherapist" :key="t">
+              communities: {{ t.communities }} | name:
+              {{ t.name.first }}
+            </li>
+          </ul>
+        </div>
       </v-card>
     </v-card>
 
@@ -44,13 +81,17 @@
       <v-flex v-for="p in paginatedData" :key="p.name">
         <!-- <v-card dark color="primary">{{p.name.first + " " + p.name.last}}</v-card> -->
         <v-card color="white" dark>
-          <v-card-title class="headline">{{p.name.first + " " + p.name.last}}</v-card-title>
+          <v-card-title class="headline">{{
+            p.name.first + " " + p.name.last
+          }}</v-card-title>
           <v-card-text>
-            <div class="normaltext">{{p.address.city + ", " + p.address.state}}</div>
+            <div class="normaltext">
+              {{ p.address.city + ", " + p.address.state }}
+            </div>
           </v-card-text>
           <v-card-text>
             <b id="card-text">Title:</b>
-            <div class="normaltext">{{parseArr(p.titles)}}</div>
+            <div class="normaltext">{{ parseArr(p.titles) }}</div>
           </v-card-text>
           <v-card-actions>
             <v-btn rounded v-on:click="moreInfo(p)">More Info</v-btn>
@@ -61,12 +102,15 @@
     <button :disabled="pageNumber === 0" @click="prevPage">
       <v-icon>fas fa-arrow-left</v-icon>
     </button>
-    <button :disabled="pageNumber >= pageCount -1" @click="nextPage" style="float:right">
+    <button
+      :disabled="pageNumber >= pageCount - 1"
+      @click="nextPage"
+      style="float:right"
+    >
       <v-icon>fas fa-arrow-right</v-icon>
     </button>
   </v-container>
 </template>
-
 
 <script>
 import { db } from "@/main";
@@ -79,16 +123,25 @@ export default {
     size: {
       type: Number,
       required: false,
-      default: 4
-    }
+      default: 4,
+    },
   },
   data() {
     return {
+      communityList: [
+        "Queer Allied",
+        "Transgender Allied",
+        "Gay Allied",
+        "Lesbian Allied",
+        "Bisexual Allied",
+        "HIV / AIDS Allied",
+      ],
       therapist: [],
       pageNumber: 0,
       insurance: false,
       payby: false,
-      specialties: false
+      communities: false,
+      checkedCommunities: [],
     };
   },
   methods: {
@@ -98,9 +151,14 @@ export default {
     showPayBy() {
       this.payby = !this.payby;
     },
-    showSpecialties() {
-      this.specialties = !this.specialties;
+    showCommunities() {
+      this.communities = !this.communities;
     },
+    // applyCommunities() {
+    //   let communityItems = [];
+
+    //   this.checkedCommunities = ;
+    // },
     nextPage() {
       this.pageNumber++;
     },
@@ -110,7 +168,7 @@ export default {
     async getTherapist() {
       let snapshot = await db.collection("therapists").get();
       let therapist = [];
-      snapshot.forEach(doc => {
+      snapshot.forEach((doc) => {
         let appData = doc.data();
         appData.id = doc.id;
         therapist.push(appData);
@@ -130,9 +188,23 @@ export default {
     },
     moreInfo(therapist) {
       this.$emit("messageFromChild", therapist);
-    }
+    },
   },
   computed: {
+    // selectedTherapist() {
+    //   return this.therapist.filter((j) =>
+    //     this.checkedCommunities.includes(j.communities)
+    //   );
+    selectedTherapist: function() {
+      return this.therapist.filter(function(therapy) {
+        let result = [];
+        for (let i = 0; i < this.checkedCommunities.length; i++) {
+          result.push(therapy.communities.includes(this.checkedCommunities[i]));
+        }
+        return result;
+      }, this);
+    },
+
     pageCount() {
       let l = this.therapist.length,
         s = this.size;
@@ -149,8 +221,8 @@ export default {
       if (this.$vuetify.breakpoint.mdAndUp) binding.column = true;
 
       return binding;
-    }
-  }
+    },
+  },
 };
 </script>
 
