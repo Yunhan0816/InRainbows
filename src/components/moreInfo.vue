@@ -3,32 +3,40 @@
     <v-card color="#dedede" dark>
       <v-card-title class="headline">{{message.name.first + " " + message.name.last}}</v-card-title>
       <v-card-subtitle>
-        <b>Location:</b>
-        <div
-          class="normaltext"
-        >{{message.address.street+ ", "+ message.address.city + ", " + message.address.state + " " + message.address.zipcode}}</div>
-      </v-card-subtitle>
-      <v-card-text>
         <b>Title:</b>
         <div class="normaltext">{{parseArr(message.titles)}}</div>
+      </v-card-subtitle>
+      <v-card-text>
+        <v-row>
+          <v-col cols="7">
+            <b>Blurb:</b>
+            <div class="normaltext">{{message.blurb}}</div>
+          </v-col>
+
+          <v-col cols="5">
+            <b>Sexualities:</b>
+            <div class="normaltext">{{parseArr(message.sexuality)}}</div>
+            <br />
+            <b>Insurance:</b>
+            <div class="normaltext">{{parseArr(message.insurance)}}</div>
+            <br />
+            <b>Pay By:</b>
+            <div class="normaltext">{{parseArr(message.payBy)}}</div>
+            <br />
+            <b>Communities:</b>
+            <div class="normaltext">{{parseArr(message.communities)}}</div>
+            <br />
+            <b>Ages:</b>
+            <div class="normaltext">{{parseArr(message.ages)}}</div>
+            <br />
+
+            <b>Location:</b>
+            <div
+              class="normaltext"
+            >{{message.address.street+ ", "+ message.address.city + ", " + message.address.state + " " + message.address.zipcode}}</div>
+          </v-col>
+        </v-row>
         <br />
-        <b>Insurance:</b>
-        <div class="normaltext">{{parseArr(message.insurance)}}</div>
-        <br />
-        <b>Pay By:</b>
-        <div class="normaltext">{{parseArr(message.payBy)}}</div>
-        <br />
-        <b>Communities:</b>
-        <div class="normaltext">{{parseArr(message.communities)}}</div>
-        <br />
-        <b>Ages:</b>
-        <div class="normaltext">{{parseArr(message.ages)}}</div>
-        <br />
-        <b>Sexualities:</b>
-        <div class="normaltext">{{parseArr(message.sexuality)}}</div>
-        <br />
-        <b>Blurb:</b>
-        <div class="normaltext">{{message.blurb}}</div>
       </v-card-text>
     </v-card>
   </v-container>
