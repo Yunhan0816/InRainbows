@@ -2,10 +2,7 @@
   <v-container>
     <v-card color="#dedede" dark>
       <v-card-title class="headline">{{message.name.first + " " + message.name.last}}</v-card-title>
-      <v-card-subtitle>
-        <b>Title:</b>
-        <div class="normaltext">{{parseArr(message.titles)}}</div>
-      </v-card-subtitle>
+      <!-- <v-card-subtitle></v-card-subtitle> -->
       <v-card-text>
         <v-row>
           <v-col cols="7">
@@ -14,8 +11,17 @@
           </v-col>
 
           <v-col cols="5">
+            <b>Title:</b>
+            <div class="normaltext">{{parseArr(message.titles)}}</div>
+            <br />
             <b>Sexualities:</b>
             <div class="normaltext">{{parseArr(message.sexuality)}}</div>
+            <br />
+            <b>Specialties:</b>
+            <div class="normaltext">{{parseArr(message.specialties)}}</div>
+            <br />
+            <b>Mental Health:</b>
+            <div class="normaltext">{{parseArr(message.mentalHealth)}}</div>
             <br />
             <b>Insurance:</b>
             <div class="normaltext">{{parseArr(message.insurance)}}</div>

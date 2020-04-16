@@ -6,6 +6,42 @@
       <v-toolbar-title id="title">In Rainbows LGBT</v-toolbar-title>
     </router-link>
     <v-spacer></v-spacer>
+    <v-spacer></v-spacer>
+    <v-spacer></v-spacer>
+    <v-spacer></v-spacer>
+    <v-spacer></v-spacer>
+
+    <!-- <v-btn>Emergency Resources</v-btn> -->
+    <v-menu open-on-hover bottom offset-y>
+      <template v-slot:activator="{ on }">
+        <v-btn v-on="on">
+          <a class="resources">Emergency Help Resources</a>
+        </v-btn>
+      </template>
+
+      <v-list>
+        <v-list-item>
+          <v-list-item-title>
+            <a
+              href="https://www.lambdalegal.org/know-your-rights?gclid=CjwKCAjwhOD0BRAQEiwAK7JHmNMIxsV1w7o9R2g3t-oYkNq9Ir3iAdNqYDgZ185Qdem7Aaia0S1VCRoCoMsQAvD_BwE"
+            >LGBT Legel Help</a>
+            <br />
+          </v-list-item-title>
+        </v-list-item>
+        <v-list-item>
+          <v-list-item-title>
+            <a href="https://suicidepreventionlifeline.org/">National Suicide Prevention Lifeline</a>
+            <br />
+          </v-list-item-title>
+        </v-list-item>
+        <v-list-item>
+          <v-list-item-title>
+            <a href="https://www.crisistextline.org/">Crisis Text Line</a>
+          </v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-menu>
+    <v-spacer></v-spacer>
   </v-app-bar>
 </template>
 <script scoped>

@@ -9,7 +9,10 @@
       <br />
 
       <!-- INSURANCE filter -->
-      <v-btn rounded @click="showInsurance" class="filterbutton">Insurance</v-btn>
+      <v-btn rounded @click="showInsurance" class="filterbutton">
+        Insurance
+        <i class="fas fa-arrow-down"></i>
+      </v-btn>
       <v-card v-if="insurance == true">
         <div class="col">
           <div v-for="ins in insuranceList" :key="ins">
@@ -17,7 +20,7 @@
             <label :for="ins">{{ ins }}</label>
           </div>
           <br />
-          <span>You have chosen: {{ checkedInsurance }}</span>
+          <span>You have chosen: {{ parseArr(checkedInsurance) }}</span>
           <br />
           <v-btn rounded @click="applyInsurance">Apply</v-btn>
         </div>
@@ -27,7 +30,10 @@
       </v-card>
 
       <!-- PAYBY filter -->
-      <v-btn rounded @click="showPayBy" class="filterbutton">Pay By</v-btn>
+      <v-btn rounded @click="showPayBy" class="filterbutton">
+        Pay By
+        <i class="fas fa-arrow-down"></i>
+      </v-btn>
       <v-card v-if="payby == true">
         <div class="col">
           <div v-for="pay in paybyList" :key="pay">
@@ -35,7 +41,7 @@
             <label :for="pay">{{ pay }}</label>
           </div>
           <br />
-          <span>You have chosen: {{ checkedPayby }}</span>
+          <span>You have chosen: {{ parseArr(checkedPayby) }}</span>
           <br />
           <v-btn rounded @click="applyPayby">Apply</v-btn>
         </div>
@@ -45,7 +51,10 @@
       </v-card>
 
       <!-- COMMUNITY filter -->
-      <v-btn rounded @click="showCommunities" class="filterbutton">Communities</v-btn>
+      <v-btn rounded @click="showCommunities" class="filterbutton">
+        Communities
+        <i class="fas fa-arrow-down"></i>
+      </v-btn>
       <br />
       <br />
 
@@ -54,9 +63,12 @@
           <div v-for="com in communityList" :key="com">
             <input type="checkbox" :id="com" :value="com" v-model="checkedCommunities" />
             <label :for="com">{{ com }}</label>
+            <br />
+
+            <br />
           </div>
           <br />
-          <span>You have chosen: {{ checkedCommunities }}</span>
+          <span>You have chosen: {{ parseArr(checkedCommunities) }}</span>
           <br />
           <v-btn rounded @click="applyCommunities">Apply</v-btn>
         </div>
@@ -282,6 +294,9 @@ export default {
 </script>
 
 <style scoped>
+.downarrow {
+  padding-left: 3px;
+}
 .headline {
   color: black;
 }
