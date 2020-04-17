@@ -121,7 +121,7 @@ export default {
 #phone {
   text-decoration: none;
   color: #434343;
-  padding-right: 10%;
+  padding-right: 30px;
 }
 #resources {
   color: #aeadb1;
