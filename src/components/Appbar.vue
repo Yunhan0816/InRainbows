@@ -11,7 +11,7 @@
     <v-spacer></v-spacer>
     <v-spacer></v-spacer>
 
-    <!-- <v-btn>Emergency Resources</v-btn> -->
+    <!-- <v-btn>Emergency Resources</v-btn>
     <v-menu open-on-hover bottom offset-y>
       <template v-slot:activator="{ on }">
         <v-btn v-on="on">
@@ -40,7 +40,7 @@
           </v-list-item-title>
         </v-list-item>
       </v-list>
-    </v-menu>
+    </v-menu>-->
     <v-spacer></v-spacer>
   </v-app-bar>
 </template>
