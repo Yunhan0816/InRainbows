@@ -11,23 +11,23 @@ const router = new VueRouter({
     {
       path: "/",
       name: "home",
-      component: () => import("./views/Home.vue")
+      component: () => import("./views/Home.vue"),
     },
     {
       path: "/therapy",
       name: "therapy",
-      component: () => import("./views/Therapists.vue")
+      component: () => import("./views/Therapists.vue"),
     },
 
     {
-      path: "/login",
-      name: "login",
-      component: () => import("./views/Login.vue"),
+      path: "/emergency",
+      name: "emergency",
+      component: () => import("./views/Emergency.vue"),
       meta: {
-        requiresAuth: false
-      }
-    }
-  ]
+        requiresAuth: false,
+      },
+    },
+  ],
 });
 
 /*
