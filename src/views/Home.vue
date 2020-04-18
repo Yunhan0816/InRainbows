@@ -5,10 +5,10 @@
     <v-sheet
       id="scrolling-techniques-7"
       class="overflow-y-auto"
-      max-height="800"
+      max-height="700"
     >
       <v-parallax
-        height="800"
+        height="580"
         src="https://images.unsplash.com/photo-1553242072-345b34e7b55b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=968&q=80"
       >
         <div class="layer"></div>
@@ -18,21 +18,20 @@
         <br />
         <br />
         <br />
-        <br />
-        <br />
-        <br />
-        <br />
 
-        <br />
-
-        <v-container class="card" style="height: 800px; max-width: 700px">
-          <v-card class="mx-auto">
+        <v-container
+          class="card"
+          style="height: 800px; max-width: 550px; margin-right:50%"
+        >
+          <v-card class="mx-auto" id="roundedcard">
             <v-list-item three-line>
               <v-list-item-content>
                 <div class="overline mb-3"></div>
-                <v-list-item-title class="headline mb-1"
-                  >Connect with LGBTQ+ friendly mental health
-                  resources</v-list-item-title
+                <v-list-item-title
+                  class="mb-1"
+                  style="font-size:25px; font-weight:bold; color: #434343;"
+                  >Connect with LGBTQ+ friendly therapists <br />
+                  near you</v-list-item-title
                 >
                 <!-- <v-list-item-title class="headline mb-1">events, and communities</v-list-item-title> -->
               </v-list-item-content>
@@ -40,20 +39,26 @@
               <!-- <v-list-item-avatar tile size="80" color="grey"></v-list-item-avatar> -->
             </v-list-item>
             <div class="text">
-              <b>Show me...</b>
+              <b style="padding-right:7px;">Show me</b>
               <b id="therapist">Therapist</b>
               <br />
               <br />
-              <b>In...</b>
+              <b style="padding-right:7px;">In</b>
               <b id="boston">Boston</b>
               <br />
-              <br />
             </div>
-            <router-link :to="{ name: 'therapy' }" id="gobutton">
-              <!-- <v-btn class="gobutton">Go</v-btn> -->
-              Go
-              <v-icon>fas fa-arrow-right</v-icon>
-            </router-link>
+            <v-btn id="gobutton">
+              <router-link :to="{ name: 'therapy' }" id="gorouter">
+                <!-- <v-btn class="gobutton">Go</v-btn> -->
+                <div>
+                  <a id="go"> Go</a>
+                </div>
+                <!-- <v-icon>fas fa-arrow-right</v-icon> -->
+              </router-link>
+            </v-btn>
+            <br />
+            <br />
+
             <!-- </v-card-actions> -->
           </v-card>
         </v-container>
@@ -84,26 +89,17 @@ export default {
 };
 </script>
 <style scoped>
-.headline {
-  font-weight: bold;
-  color: #3b3b3b;
-}
 .text {
   text-align: left;
   padding: 30px;
   font-size: 20px;
 }
-#gobutton {
-  color: rgb(54, 133, 236);
-  text-decoration: none;
-  padding: 200px 400px 40px 40px;
-  font-weight: bold;
-}
+
 #therapist {
-  color: rgb(54, 133, 236);
+  color: #3c78d8;
 }
 #boston {
-  color: rgb(54, 133, 236);
+  color: #3c78d8;
 }
 .layer {
   background-color: rgba(239, 240, 241, 0.5);
@@ -111,6 +107,26 @@ export default {
   top: 0;
   left: 0;
   width: 100%;
-  height: 96%;
+  height: 100%;
+}
+#go {
+  font-weight: 1000;
+  color: white;
+}
+#gobutton {
+  text-decoration: none;
+  background-color: #3c78d8;
+  float: right;
+  margin-right: 30px;
+}
+#gorouter {
+  text-decoration: none;
+}
+#roundedcard {
+  border-radius: 30px;
+  color: #434343;
+}
+#gobutton {
+  border-radius: 10px;
 }
 </style>

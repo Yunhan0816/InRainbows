@@ -16,7 +16,10 @@
                   gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
                   height="500px"
                 >
-                  <v-card-title v-text="card.title" id="cardtitle"></v-card-title>
+                  <v-card-title
+                    v-text="card.title"
+                    id="cardtitle"
+                  ></v-card-title>
                 </v-img>
               </v-card>
             </v-col>
@@ -54,7 +57,8 @@
                     Self-Harm Hotline
                   </v-list-item>
                   <v-list-item>
-                    <a id="phone">+1 (800) 230-7526</a>Planned Parenthood Hotline
+                    <a id="phone">+1 (800) 230-7526</a>Planned Parenthood
+                    Hotline
                   </v-list-item>
                   <v-list-item>
                     <a id="phone">+1 (800) 222-1222</a>
@@ -79,7 +83,8 @@
                     <a id="phone">+1 (800) 221-7044</a>AIDS Crisis Line
                   </v-list-item>
                   <v-list-item>
-                    <a id="phone">+1 (800) 422-4453</a>The Childhelp National Child Abuse Hotline
+                    <a id="phone">+1 (800) 422-4453</a>The Childhelp National
+                    Child Abuse Hotline
                   </v-list-item>
                   <v-list-item>
                     <a id="phone">+1 (800) 565-8860</a>
@@ -91,18 +96,39 @@
           </v-row>
         </v-container>
       </v-card>
-      <Footer />
+      <v-col class="emergency" cols="12" id="emergencyid">
+        <v-container id="text_emergency">
+          <h3>
+            If you are in a life threatening situation, please do not use this
+            site.
+          </h3>
+          <br />
+
+          <h3>
+            Call (800) 273-825 or use these
+            <router-link to="/emergency" id="routerlink">resources</router-link
+            >for help.
+          </h3>
+          <br />
+          <h3>Contact us</h3>
+        </v-container>
+      </v-col>
+      <v-col class="text-center" cols="12" id="footername">
+        {{ new Date().getFullYear() }} —
+        <strong>In Rainbows</strong>
+      </v-col>
+      <!-- <Footer /> -->
     </div>
   </v-container>
 </template>
 <script>
 import Appbar from "../components/Appbar";
-import Footer from "../components/footer";
+// import Footer from "../components/footer";
 export default {
   name: "Emergency",
   components: {
     Appbar,
-    Footer
+    // Footer
   },
   data: () => ({
     cards: [
@@ -111,10 +137,10 @@ export default {
         align: "center",
         src:
           "https://images.unsplash.com/photo-1564097060855-4b930b5f1d7d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
-        flex: 12
-      }
-    ]
-  })
+        flex: 12,
+      },
+    ],
+  }),
 };
 </script>
 <style scoped>
@@ -134,5 +160,23 @@ export default {
 #headline {
   text-align: center;
   color: #434343;
+}
+</style>
+
+<style scoped>
+#routerlink {
+  padding: 1%;
+  color: white;
+}
+
+#emergencyid {
+  background-color: #3c78d8;
+}
+#text_emergency {
+  text-align: center;
+  color: white;
+}
+#footername {
+  color: navy;
 }
 </style>

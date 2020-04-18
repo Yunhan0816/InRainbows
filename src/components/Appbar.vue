@@ -1,5 +1,10 @@
 <template>
-  <v-app-bar absolute color="white" elevate-on-scroll scroll-target="#scrolling-techniques-7">
+  <v-app-bar
+    absolute
+    color="white"
+    elevate-on-scroll
+    scroll-target="#scrolling-techniques-7"
+  >
     <v-app-bar-nav-icon></v-app-bar-nav-icon>
 
     <router-link :to="{ name: 'home' }" id="routerlink">
@@ -15,14 +20,14 @@
     <v-spacer></v-spacer>
     <v-spacer></v-spacer>
     <router-link :to="{ name: 'therapy' }" id="routerlink">
-      <v-toolbar-title id="therapylink">Therapist</v-toolbar-title>
+      <v-toolbar-title id="therapylink">Find Your Therapist</v-toolbar-title>
     </router-link>
     <v-spacer></v-spacer>
   </v-app-bar>
 </template>
 <script scoped>
 export default {
-  name: "Appbar"
+  name: "Appbar",
 };
 </script>
 <style scoped>

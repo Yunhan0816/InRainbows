@@ -1,8 +1,8 @@
 <template>
   <v-footer padless>
     <v-col class="whoweare" cols="12" id="whoweareid">
-      <h1>WHO WE ARE</h1>
       <br />
+      <h1>WHO WE ARE</h1>
       <p id="aboutustext">
         Our <a id="mission">mission </a> is to make <a id="lgbt"> LGBTQ+ </a>
         <br />friendly <a id="therapist">therapist </a> and
@@ -11,28 +11,43 @@
       </p>
     </v-col>
     <v-col class="howitworks" cols="12" id="worksid">
+      <br />
       <h1>HOW IT WORKS</h1>
-      <h2>Start your journey in just a few steps</h2>
+      <br />
+      <p id="subtitle">Start your journey in just a few steps</p>
 
       <br />
       <v-row>
         <v-col cols="3">
-          <i class="fas fa-map-marker-alt" id="mapicon"></i>
+          <i class="fas fa-map-marker-alt fa-10x" id="mapicon"></i>
+          <br />
+          <br />
+          <br />
+          <h3>Enter your <br />location</h3>
+        </v-col>
+        <v-col cols="3">
+          <i class="fas fa-filter fa-10x" id="filtericon"></i>
+          <br />
+          <br />
+          <br />
 
-          <h3>Enter your location</h3>
+          <h3>Apply filters to fit your <br />preferences</h3>
         </v-col>
         <v-col cols="3">
-          <i class="fas fa-filter"></i>
-          <h3>Apply filters to fit your preferences</h3>
-        </v-col>
-        <v-col cols="3">
-          <i class="fas fa-search"></i>
+          <i class="fas fa-search fa-10x" id="searchicon"></i>
+          <br />
+          <br />
+          <br />
           <h3>
-            Search through our selections of LGBTQ+ mental health resources
+            Search through our <br />selections of LGBTQ+ <br />mental health
+            resources
           </h3>
         </v-col>
         <v-col cols="3">
-          <i class="fas fa-user-md"></i>
+          <i class="fas fa-user-md fa-10x" id="doctoricon"></i>
+          <br />
+          <br />
+          <br />
           <h3>Find your therapist!</h3>
         </v-col>
       </v-row>
@@ -92,6 +107,7 @@ export default {
   /* padding: 0.5px; */
   font-size: 25px;
   font-weight: 400;
+  padding-bottom: 40px;
 }
 #mission {
   color: #cc0000;
@@ -110,7 +126,19 @@ export default {
   color: #434343;
 }
 #mapicon {
-  color: red;
-  size: 300%;
+  color: #cc0000;
+}
+#filtericon {
+  color: #dd4f1a;
+}
+#searchicon {
+  color: #6aa84f;
+}
+#doctoricon {
+  color: #674ea7;
+}
+#subtitle {
+  font-size: 25px;
+  font-weight: 400;
 }
 </style>
