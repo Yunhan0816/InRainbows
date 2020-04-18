@@ -27,10 +27,10 @@
 
           <v-row>
             <v-container id="headline">
-              <h3>
+              <p style="font-size: 25px;font-weight: 400;">
                 If you or anyone you know are in crisis or in danger
                 <br />Please use the following resources to get immediate help.
-              </h3>
+              </p>
             </v-container>
           </v-row>
           <v-row>

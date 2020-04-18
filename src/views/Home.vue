@@ -5,7 +5,7 @@
     <v-sheet
       id="scrolling-techniques-7"
       class="overflow-y-auto"
-      max-height="700"
+      max-height="800"
     >
       <v-parallax
         height="580"
@@ -29,19 +29,18 @@
                 <div class="overline mb-3"></div>
                 <v-list-item-title
                   class="mb-1"
-                  style="font-size:25px; font-weight:bold; color: #434343;"
-                  >Connect with LGBTQ+ friendly therapists <br />
-                  near you</v-list-item-title
+                  style="font-size:25px; font-weight:bold; color: #434343;margin: 10px"
+                  >Connect with LGBTQ+ friendly<br />
+                  therapists near you</v-list-item-title
                 >
                 <!-- <v-list-item-title class="headline mb-1">events, and communities</v-list-item-title> -->
               </v-list-item-content>
 
               <!-- <v-list-item-avatar tile size="80" color="grey"></v-list-item-avatar> -->
             </v-list-item>
-            <div class="text">
+            <div class="text" style="margin: 10px">
               <b style="padding-right:7px;">Show me</b>
               <b id="therapist">Therapist</b>
-              <br />
               <br />
               <b style="padding-right:7px;">In</b>
               <b id="boston">Boston</b>
