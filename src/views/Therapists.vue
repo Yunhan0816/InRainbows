@@ -1,29 +1,35 @@
 <template>
-  <v-container id="page-container">
-    <div id="content-wrap">
-      <Appbar />
-      <h2>Nearby Therapists</h2>
+  <v-container>
+    <v-card class="overflow-hidden">
+      <v-sheet
+        id="scrolling-techniques-7"
+        class="overflow-y-auto"
+        max-height="800"
+      >
+        <Appbar />
+        <h2>Nearby Therapists</h2>
 
-      <v-row>
-        <v-col cols="5" width="100%" height="100%" tile>
-          <!-- <v-card class="mx-auto" tile> -->
-          <TherapistList v-on:messageFromChild="childMessageReceived" />
-          <!-- </v-card> -->
-        </v-col>
+        <v-row>
+          <v-col cols="5" width="100%" height="100%" tile>
+            <!-- <v-card class="mx-auto" tile> -->
+            <TherapistList v-on:messageFromChild="childMessageReceived" />
+            <!-- </v-card> -->
+          </v-col>
 
-        <v-col cols="7">
-          <gmap />
-          <moreInfo :message="therapist" />
-        </v-col>
-      </v-row>
-    </div>
-    <!-- <Footer id="footer" /> -->
+          <v-col cols="7">
+            <gmap />
+            <moreInfo :message="therapist" />
+          </v-col>
+        </v-row>
+      </v-sheet>
+    </v-card>
+
+    <!-- <Footer /> -->
   </v-container>
 </template>
 <script>
 import gmap from "../components/gmap";
 import Appbar from "../components/Appbar";
-// import Footer from "../components/footer";
 import TherapistList from "../components/therapistList";
 import moreInfo from "../components/moreInfo";
 
@@ -36,20 +42,19 @@ export default {
     gmap,
     Appbar,
     moreInfo,
-    // Footer,
-    TherapistList
+    TherapistList,
   },
   data() {
     return {
-      therapist: "test"
+      therapist: "test",
     };
   },
   methods: {
     childMessageReceived(info) {
       console.log(info);
       this.therapist = info;
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped>
@@ -68,5 +73,23 @@ export default {
   bottom: 0;
   width: 100%;
   height: 2.5rem; /* Footer height */
+}
+</style>
+
+<style scoped>
+#routerlink {
+  padding: 1%;
+  color: white;
+}
+
+#emergencyid {
+  background-color: #3c78d8;
+}
+#text_emergency {
+  text-align: center;
+  color: white;
+}
+#footername {
+  color: navy;
 }
 </style>

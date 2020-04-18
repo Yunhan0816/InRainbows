@@ -41,6 +41,7 @@ export default {
   font-size: 20px;
   color: #3b3b3b;
   margin-left: 25px;
+  margin-right: 25px;
   font-weight: 500;
 }
 #therapylink:hover:after {
