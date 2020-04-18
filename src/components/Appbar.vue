@@ -22,7 +22,9 @@
     <router-link :to="{ name: 'therapy' }" id="routerlink">
       <v-toolbar-title id="therapylink">Find Your Therapist</v-toolbar-title>
     </router-link>
-    <v-spacer></v-spacer>
+    <router-link :to="{ name: 'emergency' }" id="routerlink">
+      <v-toolbar-title id="therapylink">Emergency Resources</v-toolbar-title>
+    </router-link>
   </v-app-bar>
 </template>
 <script scoped>
@@ -38,6 +40,8 @@ export default {
 #therapylink {
   font-size: 20px;
   color: #3b3b3b;
+  margin-left: 25px;
+  font-weight: 500;
 }
 #therapylink:hover:after {
   width: 100%;
