@@ -12,12 +12,12 @@
         <v-row>
           <v-col cols="5" width="100%" height="100%" tile>
             <!-- <v-card class="mx-auto" tile> -->
-            <TherapistList v-on:messageFromChild="childMessageReceived" />
+            <TherapistList v-on:moreInfo="changeInfo" v-on:newList="updateMap"/>
             <!-- </v-card> -->
           </v-col>
 
           <v-col cols="7">
-            <gmap />
+            <gmap :mapTherapist="mapTherapist"/>
             <moreInfo :message="therapist" />
           </v-col>
         </v-row>
@@ -47,13 +47,16 @@ export default {
   data() {
     return {
       therapist: "test",
+      mapTherapist: "test",
     };
   },
   methods: {
-    childMessageReceived(info) {
-      console.log(info);
+    changeInfo(info) {
       this.therapist = info;
     },
+    updateMap(info) {
+      this.mapTherapist = info;
+    }
   },
 };
 </script>

@@ -222,7 +222,7 @@ export default {
       }
     },
     moreInfo(therapist) {
-      this.$emit("messageFromChild", therapist);
+      this.$emit("moreInfo", therapist);
     }
   },
   computed: {
@@ -271,7 +271,6 @@ export default {
         }
       }, this);
     },
-
     pageCount() {
       let l = this.therapist.length,
         s = this.size;
@@ -280,6 +279,7 @@ export default {
     paginatedData() {
       const start = this.pageNumber * this.size,
         end = start + this.size;
+      this.$emit("newList", this.therapist.slice(start, end));
       return this.therapist.slice(start, end);
     },
     binding() {

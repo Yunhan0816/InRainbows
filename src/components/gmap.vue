@@ -7,111 +7,117 @@
 
 <script>
 import gmapsInit from "../gmaps";
-import { db } from "@/main";
 export default {
   name: "gmap",
+  props: {
+    mapTherapist: Object,
+  },
   data() {
     return {
-      therapist: []
+      google: Object,
+      geocoder: Object,
+      map: Object,
+      marker1: Object,
+      marker2: Object,
+      marker3: Object,
+      marker4: Object,
     }
   },
   methods: {
     parseAddress(arr) {
       return arr.street + " " + arr.unit + " " + arr.city + " " + arr.state + " " + arr.zipcode
+    },
+    updateMap() {
+      console.log(this.mapTherapist)
+      this.geocoder.geocode({ address: this.parseAddress(this.mapTherapist[0].address) },
+        function(results, status) {
+          if (status === "OK") {
+            this.marker1.setPosition(results[0].geometry.location)
+            this.marker1.location;
+          } else {
+          console.log(status);
+          }
+        }
+      );
+      this.geocoder.geocode({ address: this.parseAddress(this.mapTherapist[1].address) },
+        function(results, status) {
+          if (status === "OK") {
+            this.marker2.setPosition(results[0].geometry.location)
+            this.marker2.location;
+          } else {
+          console.log(status);
+          }
+        }
+      );
+      this.geocoder.geocode({ address: this.parseAddress(this.mapTherapist[2].address) },
+        function(results, status) {
+          if (status === "OK") {
+            this.marker3.setPosition(results[0].geometry.location)
+            this.marker3.location;
+          } else {
+          console.log(status);
+          }
+        }
+      );
+      this.geocoder.geocode({ address: this.parseAddress(this.mapTherapist[3].address) },
+        function(results, status) {
+          if (status === "OK") {
+            this.marker4.setPosition(results[0].geometry.location)
+            this.marker4.location;
+          } else {
+          console.log(status);
+          }
+        }
+      );
     }
   },
   async mounted() {
-    let snapshot = await db.collection("therapists").get();
-    let therapist = [];
-    snapshot.forEach(doc => {
-      let appData = doc.data();
-      appData.id = doc.id;
-      therapist.push(appData);
-    });
-    this.therapist = therapist;
     try {
       const google = await gmapsInit();
-      const geocoder = new google.maps.Geocoder();
+      this.google = google;
+      this.geocoder = new google.maps.Geocoder();
       const map = new google.maps.Map(this.$el);
-      geocoder.geocode({ address: "Boston" }, (results, status) => {
+      this.map = map;
+      this.geocoder.geocode({ address: "Boston" }, (results, status) => {
         if (status !== "OK" || !results[0]) {
           throw new Error(status);
         }
         map.setCenter(results[0].geometry.location);
         map.fitBounds(results[0].geometry.viewport);
       });
-
-      // function geocodeAddress(geocoder, resultsMap, addressString) {
-      //   // var address = document.getElementById("address").value;
-      //   geocoder.geocode({ address: addressString }, function(results, status) {
-      //     if (status === "OK") {
-      //       resultsMap.setCenter(results[0].geometry.location);
-      //       var marker = new google.maps.Marker({
-      //         map: resultsMap,
-      //         position: results[0].geometry.location
-      //       });
-      //       marker.location;
-      //     } else {
-      //       alert(
-      //         "Geocode was not successful for the following reason: " + status
-      //       );
-      //     }
-      //   });
-      // }
-
-      // console.log(
-      //   "TRY THESE COORDS:",
-      //   geocodeAddress(geocoder, map, "1079 Commonwealth Ave., Boston MA 02215")
-      // );
-      // const location = [
-      //   { lat: 42.3348, lng: -71.0733 },
-      //   { lat: 42.362, lng: -71.06 },
-      //   { lat: 42.3361, lng: -71.1075 },
-      //   { lat: 42.3397, lng: -71.1049 }
-      // ];
-      for (let p in this.therapist){
-        if (p < 3){
-          geocoder.geocode(
-            { address: this.parseAddress(this.therapist[p].address) },
-            function(results, status) {
-              if (status === "OK") {
-                map.setCenter(results[0].geometry.location);
-                var marker = new google.maps.Marker({
-                  map: map,
-                  position: results[0].geometry.location
-                });
-                marker.location;
-              } else {
-                console.log(p + " no work");
-              }
-            }
-          );
+      this.geocoder.geocode({ address: "700 Commonwealth Ave, Boston MA 02215" },
+        function(results, status) {
+          if (status === "OK") {
+            map.setCenter(results[0].geometry.location);
+            this.marker1 = new google.maps.Marker({
+              map: map,
+              position: results[0].geometry.location
+            });
+            this.marker2 = new google.maps.Marker({
+              map: map,
+              position: results[0].geometry.location
+            });
+            this.marker3 = new google.maps.Marker({
+              map: map,
+              position: results[0].geometry.location
+            });
+            this.marker4 = new google.maps.Marker({
+              map: map,
+              position: results[0].geometry.location
+            });
+          } else {
+          console.log(status);
+          }
         }
-      }
-
-      // const marker1 = new google.maps.Marker({
-      //   position: location[0],
-      //   map: map
-      // });
-      // marker1.location;
-      // const marker2 = new google.maps.Marker({
-      //   position: location[1],
-      //   map: map
-      // });
-      // marker2.location;
-      // const marker3 = new google.maps.Marker({
-      //   position: location[2],
-      //   map: map
-      // });
-      // marker3.location;
-      // const marker4 = new google.maps.Marker({
-      //   position: location[3],
-      //   map: map
-      // });
-      // marker4.location;
-      //   console.log(marker)
+      );
     } catch (error) {
       console.error(error);
+    }
+  },
+  watch: {
+    'mapTherapist': function() {
+      console.log("updating map")
+      this.updateMap();
     }
   }
 };
