@@ -1,23 +1,19 @@
 <template>
   <v-container>
     <v-card class="overflow-hidden">
-      <v-sheet
-        id="scrolling-techniques-7"
-        class="overflow-y-auto"
-        max-height="800"
-      >
+      <v-sheet id="scrolling-techniques-7" class="overflow-y-auto" max-height="800">
         <Appbar />
         <h2>Nearby Therapists</h2>
 
         <v-row>
           <v-col cols="5" width="100%" height="100%" tile>
             <!-- <v-card class="mx-auto" tile> -->
-            <TherapistList v-on:moreInfo="changeInfo" v-on:newList="updateMap"/>
+            <TherapistList v-on:moreInfo="changeInfo" v-on:newList="updateMap" />
             <!-- </v-card> -->
           </v-col>
 
           <v-col cols="7">
-            <gmap :mapTherapist="mapTherapist"/>
+            <gmap :mapTherapist="mapTherapist" />
             <moreInfo :message="therapist" />
           </v-col>
         </v-row>
@@ -42,12 +38,12 @@ export default {
     gmap,
     Appbar,
     moreInfo,
-    TherapistList,
+    TherapistList
   },
   data() {
     return {
       therapist: "test",
-      mapTherapist: "test",
+      mapTherapist: "test"
     };
   },
   methods: {
@@ -57,7 +53,7 @@ export default {
     updateMap(info) {
       this.mapTherapist = info;
     }
-  },
+  }
 };
 </script>
 <style scoped>

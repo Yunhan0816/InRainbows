@@ -10,7 +10,7 @@ import gmapsInit from "../gmaps";
 export default {
   name: "gmap",
   props: {
-    mapTherapist: Object,
+    mapTherapist: Object
   },
   data() {
     return {
@@ -21,51 +21,66 @@ export default {
       marker2: Object,
       marker3: Object,
       marker4: Object,
-    }
+      markers: []
+    };
   },
   methods: {
     parseAddress(arr) {
-      return arr.street + " " + arr.unit + " " + arr.city + " " + arr.state + " " + arr.zipcode
+      return (
+        arr.street +
+        " " +
+        arr.unit +
+        " " +
+        arr.city +
+        " " +
+        arr.state +
+        " " +
+        arr.zipcode
+      );
     },
     updateMap() {
-      console.log(this.mapTherapist)
-      this.geocoder.geocode({ address: this.parseAddress(this.mapTherapist[0].address) },
+      console.log(this.mapTherapist);
+      this.geocoder.geocode(
+        { address: this.parseAddress(this.mapTherapist[0].address) },
         function(results, status) {
           if (status === "OK") {
-            this.marker1.setPosition(results[0].geometry.location)
+            this.marker1.setPosition(results[0].geometry.location);
             this.marker1.location;
           } else {
-          console.log(status);
+            console.log(status);
           }
         }
       );
-      this.geocoder.geocode({ address: this.parseAddress(this.mapTherapist[1].address) },
+      this.geocoder.geocode(
+        { address: this.parseAddress(this.mapTherapist[1].address) },
         function(results, status) {
           if (status === "OK") {
-            this.marker2.setPosition(results[0].geometry.location)
+            this.marker2.setPosition(results[0].geometry.location);
             this.marker2.location;
           } else {
-          console.log(status);
+            console.log(status);
           }
         }
       );
-      this.geocoder.geocode({ address: this.parseAddress(this.mapTherapist[2].address) },
+      this.geocoder.geocode(
+        { address: this.parseAddress(this.mapTherapist[2].address) },
         function(results, status) {
           if (status === "OK") {
-            this.marker3.setPosition(results[0].geometry.location)
+            this.marker3.setPosition(results[0].geometry.location);
             this.marker3.location;
           } else {
-          console.log(status);
+            console.log(status);
           }
         }
       );
-      this.geocoder.geocode({ address: this.parseAddress(this.mapTherapist[3].address) },
+      this.geocoder.geocode(
+        { address: this.parseAddress(this.mapTherapist[3].address) },
         function(results, status) {
           if (status === "OK") {
-            this.marker4.setPosition(results[0].geometry.location)
+            this.marker4.setPosition(results[0].geometry.location);
             this.marker4.location;
           } else {
-          console.log(status);
+            console.log(status);
           }
         }
       );
@@ -85,7 +100,8 @@ export default {
         map.setCenter(results[0].geometry.location);
         map.fitBounds(results[0].geometry.viewport);
       });
-      this.geocoder.geocode({ address: "700 Commonwealth Ave, Boston MA 02215" },
+      this.geocoder.geocode(
+        { address: "700 Commonwealth Ave, Boston MA 02215" },
         function(results, status) {
           if (status === "OK") {
             map.setCenter(results[0].geometry.location);
@@ -106,17 +122,26 @@ export default {
               position: results[0].geometry.location
             });
           } else {
-          console.log(status);
+            console.log(status);
           }
         }
       );
+      // showme = function(index) {
+      //   if (
+      //     this.markers[index].getAnimation() != google.maps.Animation.BOUNCE
+      //   ) {
+      //     this.markers[index].setAnimation(google.maps.Animation.BOUNCE);
+      //   } else {
+      //     this.markers[index].setAnimation(null);
+      //   }
+      // };
     } catch (error) {
       console.error(error);
     }
   },
   watch: {
-    'mapTherapist': function() {
-      console.log("updating map")
+    mapTherapist: function() {
+      console.log("updating map");
       this.updateMap();
     }
   }

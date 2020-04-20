@@ -1,11 +1,7 @@
 <template>
   <v-container>
     <v-card class="overflow-hidden">
-      <v-sheet
-        id="scrolling-techniques-7"
-        class="overflow-y-auto"
-        max-height="800"
-      >
+      <v-sheet id="scrolling-techniques-7" class="overflow-y-auto" max-height="800">
         <Appbar />
 
         <v-container>
@@ -13,22 +9,15 @@
             <v-card class="mx-auto" max-width="1200">
               <v-container fluid>
                 <v-row dense>
-                  <v-col
-                    v-for="card in cards"
-                    :key="card.title"
-                    :cols="card.flex"
-                  >
+                  <v-col v-for="card in cards" :key="card.title" :cols="card.flex">
                     <v-card>
                       <v-img
                         :src="card.src"
                         class="white--text align-end"
                         gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-                        height="500px"
+                        height="300px"
                       >
-                        <v-card-title
-                          v-text="card.title"
-                          id="cardtitle"
-                        ></v-card-title>
+                        <v-card-title v-text="card.title" id="cardtitle"></v-card-title>
                       </v-img>
                     </v-card>
                   </v-col>
@@ -107,7 +96,7 @@
                 </v-row>
               </v-container>
             </v-card>
-            <v-col class="emergency" cols="12" id="emergencyid">
+            <!-- <v-col class="emergency" cols="12" id="emergencyid">
               <v-container id="text_emergency">
                 <h3>
                   If you are in a life threatening situation, please do not use
@@ -117,14 +106,12 @@
 
                 <h3>
                   Call (800) 273-825 or use these
-                  <router-link to="/emergency" id="routerlink"
-                    >resources</router-link
-                  >for help.
+                  <router-link to="/emergency" id="routerlink">resources</router-link>for help.
                 </h3>
                 <br />
                 <h3>Contact us</h3>
               </v-container>
-            </v-col>
+            </v-col>-->
             <v-col class="text-center" cols="12" id="footername">
               {{ new Date().getFullYear() }} —
               <strong>In Rainbows</strong>
@@ -142,7 +129,7 @@ import Appbar from "../components/Appbar";
 export default {
   name: "Emergency",
   components: {
-    Appbar,
+    Appbar
     // Footer
   },
   data: () => ({
@@ -152,10 +139,10 @@ export default {
         align: "center",
         src:
           "https://images.unsplash.com/photo-1564097060855-4b930b5f1d7d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
-        flex: 12,
-      },
-    ],
-  }),
+        flex: 12
+      }
+    ]
+  })
 };
 </script>
 <style scoped>
