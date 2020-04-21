@@ -13,7 +13,7 @@
           </v-col>
 
           <v-col cols="7">
-            <gmap :mapTherapist="mapTherapist" />
+            <gmap :mapTherapist="mapTherapist" :highlight="therapist"/>
             <moreInfo :message="therapist" />
           </v-col>
         </v-row>

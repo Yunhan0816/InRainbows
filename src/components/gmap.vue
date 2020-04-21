@@ -10,7 +10,8 @@ import gmapsInit from "../gmaps";
 export default {
   name: "gmap",
   props: {
-    mapTherapist: Object
+    mapTherapist: Object,
+    highlight: Object
   },
   data() {
     return {
@@ -39,7 +40,6 @@ export default {
       );
     },
     updateMap() {
-      console.log(this.mapTherapist);
       this.geocoder.geocode(
         { address: this.parseAddress(this.mapTherapist[0].address) },
         function(results, status) {
@@ -79,6 +79,33 @@ export default {
           if (status === "OK") {
             this.marker4.setPosition(results[0].geometry.location);
             this.marker4.location;
+          } else {
+            console.log(status);
+          }
+        }
+      );
+    },
+    updateHighlight() {
+      this.geocoder.geocode(
+        { address: this.parseAddress(this.highlight.address) },
+        function(results, status) {
+          if (status === "OK") {
+            this.marker1.setAnimation(null);
+            this.marker2.setAnimation(null);
+            this.marker3.setAnimation(null);
+            this.marker4.setAnimation(null);
+            if(results[0].geometry.location.lat() == this.marker1.getPosition().lat() && results[0].geometry.location.lng() == this.marker1.getPosition().lng()){
+              this.marker1.setAnimation(this.google.maps.Animation.BOUNCE);
+            }
+            if(results[0].geometry.location.lat() == this.marker2.getPosition().lat() && results[0].geometry.location.lng() == this.marker2.getPosition().lng()){
+              this.marker2.setAnimation(this.google.maps.Animation.BOUNCE);
+            }
+            if(results[0].geometry.location.lat() == this.marker3.getPosition().lat() && results[0].geometry.location.lng() == this.marker3.getPosition().lng()){
+              this.marker3.setAnimation(this.google.maps.Animation.BOUNCE);
+            }
+            if(results[0].geometry.location.lat() == this.marker4.getPosition().lat() && results[0].geometry.location.lng() == this.marker4.getPosition().lng()){
+              this.marker4.setAnimation(this.google.maps.Animation.BOUNCE);
+            }
           } else {
             console.log(status);
           }
@@ -141,8 +168,10 @@ export default {
   },
   watch: {
     mapTherapist: function() {
-      console.log("updating map");
       this.updateMap();
+    },
+    highlight: function() {
+      this.updateHighlight();
     }
   }
 };
