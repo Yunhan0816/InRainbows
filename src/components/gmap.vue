@@ -88,35 +88,37 @@ export default {
   },
   async mounted() {
     try {
-      this.google = await gmapsInit();
-      this.geocoder = new this.google.maps.Geocoder();
-      this.map = new this.google.maps.Map(this.$el);
+      const google = await gmapsInit();
+      this.google = google;
+      this.geocoder = new google.maps.Geocoder();
+      const map = new google.maps.Map(this.$el);
+      this.map = map;
       this.geocoder.geocode({ address: "Boston" }, (results, status) => {
         if (status !== "OK" || !results[0]) {
           throw new Error(status);
         }
-        this.map.setCenter(results[0].geometry.location);
-        this.map.fitBounds(results[0].geometry.viewport);
+        map.setCenter(results[0].geometry.location);
+        map.fitBounds(results[0].geometry.viewport);
       });
       this.geocoder.geocode(
         { address: "700 Commonwealth Ave, Boston MA 02215" },
         function(results, status) {
           if (status === "OK") {
-            this.map.setCenter(results[0].geometry.location);
-            this.marker1 = new this.google.maps.Marker({
-              map: this.map,
+            map.setCenter(results[0].geometry.location);
+            this.marker1 = new google.maps.Marker({
+              map: map,
               position: results[0].geometry.location
             });
-            this.marker2 = new this.google.maps.Marker({
-              map: this.map,
+            this.marker2 = new google.maps.Marker({
+              map: map,
               position: results[0].geometry.location
             });
-            this.marker3 = new this.google.maps.Marker({
-              map: this.map,
+            this.marker3 = new google.maps.Marker({
+              map: map,
               position: results[0].geometry.location
             });
-            this.marker4 = new this.google.maps.Marker({
-              map: this.map,
+            this.marker4 = new google.maps.Marker({
+              map: map,
               position: results[0].geometry.location
             });
           } else {
