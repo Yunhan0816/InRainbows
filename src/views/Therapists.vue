@@ -42,8 +42,8 @@ export default {
   },
   data() {
     return {
-      therapist: "test",
-      mapTherapist: "test"
+      therapist: [],
+      mapTherapist: []
     };
   },
   methods: {

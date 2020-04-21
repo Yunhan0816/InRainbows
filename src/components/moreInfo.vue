@@ -51,7 +51,7 @@
 <script>
 export default {
   props: {
-    message: Object
+    message: Array,
   },
   mounted() {
     console.log(this.message);
