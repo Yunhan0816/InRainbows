@@ -44,6 +44,10 @@ export default {
         { address: this.parseAddress(this.mapTherapist[0].address) },
         function(results, status) {
           if (status === "OK") {
+            this.marker1.setAnimation(null);
+            this.marker2.setAnimation(null);
+            this.marker3.setAnimation(null);
+            this.marker4.setAnimation(null);
             this.marker1.setPosition(results[0].geometry.location);
             this.marker1.location;
           } else {
