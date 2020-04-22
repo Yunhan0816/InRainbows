@@ -1,29 +1,21 @@
 <template>
   <v-container>
     <v-card class="overflow-hidden">
-      <v-sheet
-        id="scrolling-techniques-7"
-        class="overflow-y-auto"
-        max-height="800"
-      >
+      <v-sheet id="scrolling-techniques-7" class="overflow-y-auto" max-height="800">
         <Appbar />
 
         <v-parallax
           height="580"
           src="https://images.unsplash.com/photo-1553242072-345b34e7b55b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=968&q=80"
         >
-          <div class="layer"></div>
-          >
+          <div class="layer"></div>>
           <br />
           <br />
           <br />
           <br />
           <br />
 
-          <v-container
-            class="card"
-            style="height: 800px; max-width: 550px; margin-right:50%"
-          >
+          <v-container class="card" style="height: 800px; max-width: 550px; margin-right:50%">
             <v-card class="mx-auto" id="roundedcard">
               <v-list-item three-line>
                 <v-list-item-content>
@@ -31,9 +23,10 @@
                   <v-list-item-title
                     class="mb-1"
                     style="font-size:25px; font-weight:bold; color: #434343;margin: 10px"
-                    >Connect with LGBTQ+ friendly<br />
-                    therapists near you</v-list-item-title
                   >
+                    Connect with LGBTQ+ friendly
+                    <br />therapists near you
+                  </v-list-item-title>
                   <!-- <v-list-item-title class="headline mb-1">events, and communities</v-list-item-title> -->
                 </v-list-item-content>
 
@@ -41,7 +34,7 @@
               </v-list-item>
               <div class="text" style="margin: 10px">
                 <b style="padding-right:7px;">Show me</b>
-                <b id="therapist">Therapist</b>
+                <b id="therapist">Therapists</b>
                 <br />
                 <b style="padding-right:7px;">In</b>
                 <b id="boston">Boston</b>
@@ -51,7 +44,7 @@
                 <router-link :to="{ name: 'therapy' }" id="gorouter">
                   <!-- <v-btn class="gobutton">Go</v-btn> -->
                   <div>
-                    <a id="go"> Go</a>
+                    <a id="go">Go</a>
                   </div>
                   <!-- <v-icon>fas fa-arrow-right</v-icon> -->
                 </router-link>
@@ -66,7 +59,7 @@
           <v-col class="text-center" cols="12">
             {{ new Date().getFullYear() }} — <strong>In Rainbows</strong>
           </v-col>
-        </v-footer>-->
+          </v-footer>-->
         </v-parallax>
         <Footer />
       </v-sheet>
@@ -78,15 +71,15 @@ import Appbar from "../components/Appbar";
 import Footer from "../components/footer";
 export default {
   props: {
-    source: String,
+    source: String
   },
   data: () => ({
-    drawer: null,
+    drawer: null
   }),
   components: {
     Appbar,
-    Footer,
-  },
+    Footer
+  }
 };
 </script>
 <style scoped>

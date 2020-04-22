@@ -4,10 +4,16 @@
       <br />
       <h1>WHO WE ARE</h1>
       <p id="aboutustext">
-        Our <a id="mission">mission </a> is to make <a id="lgbt"> LGBTQ+ </a>
-        <br />friendly <a id="therapist">therapist </a> and
-        <a id="mental health"> mental health<br />resources</a> more readily
-        <a id="accessible"> accessible</a>
+        Our
+        <a id="mission">mission</a> is to make
+        <a id="lgbt">LGBTQ+</a>
+        <br />friendly
+        <a id="therapist">therapist</a> and
+        <a id="mental health">
+          mental health
+          <br />resources
+        </a> more readily
+        <a id="accessible">accessible</a>
       </p>
     </v-col>
     <v-col class="howitworks" cols="12" id="worksid">
@@ -23,7 +29,10 @@
           <br />
           <br />
           <br />
-          <h3>Enter your <br />location</h3>
+          <h3>
+            Enter your
+            <br />location
+          </h3>
         </v-col>
         <v-col cols="3">
           <i class="fas fa-filter fa-10x" id="filtericon"></i>
@@ -31,7 +40,10 @@
           <br />
           <br />
 
-          <h3>Apply filters to fit your <br />preferences</h3>
+          <h3>
+            Apply filters to fit your
+            <br />preferences
+          </h3>
         </v-col>
         <v-col cols="3">
           <i class="fas fa-search fa-10x" id="searchicon"></i>
@@ -39,7 +51,9 @@
           <br />
           <br />
           <h3>
-            Search through our <br />selections of LGBTQ+ <br />mental health
+            Search through our
+            <br />selections of LGBTQ+
+            <br />mental health
             resources
           </h3>
         </v-col>
@@ -55,16 +69,12 @@
     </v-col>
     <v-col class="emergency" cols="12" id="emergencyid">
       <v-container id="text_emergency">
-        <h3>
-          If you are in a life threatening situation, please do not use this
-          site.
-        </h3>
+        <h3>If you are in a life threatening situation</h3>
         <br />
 
         <h3>
           Call (800) 273-825 or use these
-          <router-link to="/emergency" id="routerlink">resources</router-link
-          >for help.
+          <router-link to="/emergency" id="routerlink">resources</router-link>for help.
         </h3>
         <br />
         <h3>Contact us</h3>
@@ -79,7 +89,7 @@
 
 <script scoped>
 export default {
-  name: "Footer",
+  name: "Footer"
 };
 </script>
 

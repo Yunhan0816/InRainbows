@@ -6,7 +6,7 @@
       <v-card-text>
         <v-row>
           <v-col cols="7">
-            <b>Blurb:</b>
+            <b>Bio:</b>
             <div class="normaltext">{{message.blurb}}</div>
           </v-col>
 
@@ -51,7 +51,7 @@
 <script>
 export default {
   props: {
-    message: Array,
+    message: Array
   },
   mounted() {
     console.log(this.message);
