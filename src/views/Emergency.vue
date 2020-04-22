@@ -45,7 +45,7 @@
                         </v-list-item>
                         <v-list-item>
                           <a id="phone">+1 (800) 273-8255</a>
-                          National Suicie Prevention lifeline
+                          National Suicide Prevention lifeline
                         </v-list-item>
                         <v-list-item>
                           <a id="phone">+1 (800) 996-6228</a>
