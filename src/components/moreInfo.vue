@@ -13,12 +13,15 @@
           <v-col cols="5">
             <b>Title:</b>
             <div class="normaltext">{{parseArr(message.titles)}}</div>
-            <br />
+            <!-- <br />
             <b>Sexualities:</b>
-            <div class="normaltext">{{parseArr(message.sexuality)}}</div>
+            <div class="normaltext">{{parseArr(message.sexuality)}}</div>-->
             <br />
             <b>Specialties:</b>
             <div class="normaltext">{{parseArr(message.specialties)}}</div>
+            <br />
+            <b>Communities:</b>
+            <div class="normaltext">{{parseArr(message.communities)}}</div>
             <br />
             <b>Mental Health:</b>
             <div class="normaltext">{{parseArr(message.mentalHealth)}}</div>
@@ -29,9 +32,7 @@
             <b>Pay By:</b>
             <div class="normaltext">{{parseArr(message.payBy)}}</div>
             <br />
-            <b>Communities:</b>
-            <div class="normaltext">{{parseArr(message.communities)}}</div>
-            <br />
+
             <b>Ages:</b>
             <div class="normaltext">{{parseArr(message.ages)}}</div>
             <br />

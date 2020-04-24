@@ -69,7 +69,7 @@
     </v-col>
     <v-col class="emergency" cols="12" id="emergencyid">
       <v-container id="text_emergency">
-        <h3>If you are in a life threatening situation</h3>
+        <h3>If you are in a life threatening situation,</h3>
         <br />
 
         <h3>

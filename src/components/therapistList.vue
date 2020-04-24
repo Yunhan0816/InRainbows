@@ -6,13 +6,33 @@
     <h2 style="color:#3b3b3b ">Therapists in Boston</h2>
 
     <v-card class="mx-auto" outlined id="filtercard">
-      <br />
-
+      <v-card-title style="color: #3b3b3b">
+        <v-spacer></v-spacer>Personalize therapists
+        <br />based on your preferences
+        <v-spacer></v-spacer>
+      </v-card-title>
       <!-- INSURANCE filter -->
-      <v-btn rounded @click="showInsurance" class="filterbutton">
-        Insurance
-        <i class="fas fa-arrow-down"></i>
-      </v-btn>
+      <!-- <div
+        class="child-two"
+        v-show="insuranceModal === true"
+      >Find therapists who accept your insurance!</div>-->
+      <v-tooltip top>
+        <template v-slot:activator="{ on }">
+          <v-btn
+            v-on="on"
+            rounded
+            @click="showInsurance"
+            class="filterbutton"
+            @mouseover="insuranceModal = true"
+            @mouseout="insuranceModal = false"
+          >
+            Insurance
+            <i class="fas fa-arrow-down"></i>
+          </v-btn>
+        </template>
+        <span>Find therapists who fit on your insurance</span>
+      </v-tooltip>
+
       <v-card v-if="insurance == true">
         <div class="col">
           <div v-for="ins in insuranceList" :key="ins">
@@ -30,10 +50,15 @@
       </v-card>
 
       <!-- PAYBY filter -->
-      <v-btn rounded @click="showPayBy" class="filterbutton">
-        Pay By
-        <i class="fas fa-arrow-down"></i>
-      </v-btn>
+      <v-tooltip top>
+        <template v-slot:activator="{ on }">
+          <v-btn v-on="on" rounded @click="showPayBy" class="filterbutton">
+            Pay By
+            <i class="fas fa-arrow-down"></i>
+          </v-btn>
+        </template>
+        <span>Find therapists accepts your payment methods</span>
+      </v-tooltip>
       <v-card v-if="payby == true">
         <div class="col">
           <div v-for="pay in paybyList" :key="pay">
@@ -51,10 +76,15 @@
       </v-card>
 
       <!-- COMMUNITY filter -->
-      <v-btn rounded @click="showCommunities" class="filterbutton">
-        Communities
-        <i class="fas fa-arrow-down"></i>
-      </v-btn>
+      <v-tooltip top>
+        <template v-slot:activator="{ on }">
+          <v-btn v-on="on" rounded @click="showCommunities" class="filterbutton">
+            Communities
+            <i class="fas fa-arrow-down"></i>
+          </v-btn>
+        </template>
+        <span>Find therapists who ally with your sexualities and communities</span>
+      </v-tooltip>
       <br />
       <br />
 
@@ -127,12 +157,20 @@ export default {
     return {
       paybyList: ["Cash", "Check", "Visa", "PayPal", "Health Savings Account"],
       communityList: [
+        "HIV / AIDS Allied",
         "Queer Allied",
+        "Body Positivity",
         "Transgender Allied",
         "Gay Allied",
         "Lesbian Allied",
         "Bisexual Allied",
-        "HIV / AIDS Allied"
+        "Open Relationships Non-Monogamy",
+        "Veterans",
+        "Kink Allied",
+        "Sex Worker Allied",
+        "Intersex Allied",
+        "Non-Binary Allied",
+        "Cancer"
       ],
       insuranceList: [
         "BlueCross BlueShield",
@@ -145,6 +183,7 @@ export default {
         "Harvard Pilgrim"
       ],
       therapist: [],
+      insuranceModal: false,
       pageNumber: 0,
       insurance: false,
       payby: false,
@@ -173,6 +212,7 @@ export default {
       }
       console.log(this.therapist);
       this.insurance = !this.insurance;
+      alert("Succeessfully applied insurance preferences!");
     },
     applyPayby() {
       if (this.selectedTherapistP != []) {
@@ -183,6 +223,7 @@ export default {
       }
       console.log(this.therapist);
       this.payby = !this.payby;
+      alert("Succeessfully applied payment method preferences!");
     },
     applyCommunities() {
       if (this.selectedTherapistC != []) {
@@ -193,6 +234,7 @@ export default {
       }
       console.log(this.therapist);
       this.communities = !this.communities;
+      alert("Succeessfully applied community preferences!");
     },
     nextPage() {
       this.pageNumber++;
