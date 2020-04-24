@@ -106,6 +106,13 @@
           <strong>Therapists in chosen communitie(s)</strong>
         </div>
       </v-card>
+
+      <div style="margin-left:10%; margin-right:10%; margin-bottom: 5%">
+        <v-text-field v-model="placeholder" label="Enter zip code to find therapists near you"></v-text-field>
+        <v-btn small @click="applyLocation">
+          <i class="fas fa-search"></i>
+        </v-btn>
+      </div>
     </v-card>
 
     <v-layout v-bind="binding">
@@ -235,6 +242,9 @@ export default {
       console.log(this.therapist);
       this.communities = !this.communities;
       alert("Succeessfully applied community preferences!");
+    },
+    applyLocation() {
+      console.log("applying zip code");
     },
     nextPage() {
       this.pageNumber++;

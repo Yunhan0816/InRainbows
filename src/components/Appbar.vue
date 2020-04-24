@@ -3,7 +3,7 @@
     <v-img class="mx-2" src="../assets/InRainbows.png" max-height="64" max-width="65" contain></v-img>
 
     <router-link :to="{ name: 'home' }" id="routerlink">
-      <v-toolbar-title id="title">In Rainbows LGBT</v-toolbar-title>
+      <v-toolbar-title id="title">InRainbows LGBT</v-toolbar-title>
     </router-link>
     <v-spacer></v-spacer>
     <v-spacer></v-spacer>
