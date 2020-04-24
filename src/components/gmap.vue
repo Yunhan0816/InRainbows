@@ -48,7 +48,7 @@ export default {
             this.marker2.setAnimation(-1);
             this.marker3.setAnimation(-1);
             this.marker4.setAnimation(-1);
-            console.log("NOT BOUNCING")
+            console.log("NOT BOUNCING");
             this.marker1.setPosition(results[0].geometry.location);
             this.marker1.location;
           } else {
@@ -99,17 +99,37 @@ export default {
             this.marker2.setAnimation(-1);
             this.marker3.setAnimation(-1);
             this.marker4.setAnimation(-1);
-            if(results[0].geometry.location.lat() == this.marker1.getPosition().lat() && results[0].geometry.location.lng() == this.marker1.getPosition().lng()){
+            if (
+              results[0].geometry.location.lat() ==
+                this.marker1.getPosition().lat() &&
+              results[0].geometry.location.lng() ==
+                this.marker1.getPosition().lng()
+            ) {
               this.marker1.setAnimation(this.google.maps.Animation.BOUNCE);
-              console.log("BOUNCING!")
+              console.log("BOUNCING!");
             }
-            if(results[0].geometry.location.lat() == this.marker2.getPosition().lat() && results[0].geometry.location.lng() == this.marker2.getPosition().lng()){
+            if (
+              results[0].geometry.location.lat() ==
+                this.marker2.getPosition().lat() &&
+              results[0].geometry.location.lng() ==
+                this.marker2.getPosition().lng()
+            ) {
               this.marker2.setAnimation(this.google.maps.Animation.BOUNCE);
             }
-            if(results[0].geometry.location.lat() == this.marker3.getPosition().lat() && results[0].geometry.location.lng() == this.marker3.getPosition().lng()){
+            if (
+              results[0].geometry.location.lat() ==
+                this.marker3.getPosition().lat() &&
+              results[0].geometry.location.lng() ==
+                this.marker3.getPosition().lng()
+            ) {
               this.marker3.setAnimation(this.google.maps.Animation.BOUNCE);
             }
-            if(results[0].geometry.location.lat() == this.marker4.getPosition().lat() && results[0].geometry.location.lng() == this.marker4.getPosition().lng()){
+            if (
+              results[0].geometry.location.lat() ==
+                this.marker4.getPosition().lat() &&
+              results[0].geometry.location.lng() ==
+                this.marker4.getPosition().lng()
+            ) {
               this.marker4.setAnimation(this.google.maps.Animation.BOUNCE);
             }
           } else {

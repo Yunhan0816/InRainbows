@@ -5,6 +5,7 @@
     <router-link :to="{ name: 'home' }" id="routerlink">
       <v-toolbar-title id="title">InRainbows LGBT</v-toolbar-title>
     </router-link>
+
     <v-spacer></v-spacer>
     <v-spacer></v-spacer>
     <v-spacer></v-spacer>
