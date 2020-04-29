@@ -1,31 +1,35 @@
 <template>
-  <v-app-bar absolute color="white" elevate-on-scroll scroll-target="#scrolling-techniques-7">
-    <v-img class="mx-2" src="../assets/InRainbows.png" max-height="64" max-width="65" contain></v-img>
-
-    <router-link :to="{ name: 'home' }" id="routerlink">
-      <v-toolbar-title id="title">InRainbows LGBT</v-toolbar-title>
-    </router-link>
-
-    <v-spacer></v-spacer>
-    <v-spacer></v-spacer>
-    <v-spacer></v-spacer>
-    <v-spacer></v-spacer>
-    <v-spacer></v-spacer>
-    <v-spacer></v-spacer>
-    <v-spacer></v-spacer>
-    <v-spacer></v-spacer>
-    <v-spacer></v-spacer>
-    <router-link :to="{ name: 'therapy' }" id="routerlink">
-      <v-toolbar-title id="therapylink">Find Your Therapist</v-toolbar-title>
-    </router-link>
-    <router-link :to="{ name: 'emergency' }" id="routerlink">
-      <v-toolbar-title id="therapylink">Emergency Resources</v-toolbar-title>
-    </router-link>
+  <v-app-bar
+    absolute
+    color="white"
+    elevate-on-scroll
+    scroll-target="#scrolling-techniques-7"
+  >
+    <v-img
+      class="mx-2"
+      src="../assets/InRainbows.png"
+      max-height="60"
+      max-width="50"
+      contain
+    ></v-img>
+    <div>
+      <router-link :to="{ name: 'home' }" id="routerlink">
+        <v-toolbar-title id="title">InRainbows LGBT</v-toolbar-title>
+      </router-link>
+    </div>
+    <div style="padding-top: 1%; padding-left: 30%">
+      <router-link :to="{ name: 'therapy' }" id="routerlink">
+        <v-toolbar-title id="therapylink">Find Your Therapist</v-toolbar-title>
+      </router-link>
+      <router-link :to="{ name: 'emergency' }" id="routerlink">
+        <v-toolbar-title id="therapylink">Emergency Resources</v-toolbar-title>
+      </router-link>
+    </div>
   </v-app-bar>
 </template>
 <script scoped>
 export default {
-  name: "Appbar"
+  name: "Appbar",
 };
 </script>
 <style scoped>

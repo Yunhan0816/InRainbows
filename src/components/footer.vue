@@ -7,12 +7,12 @@
         Our
         <a id="mission">mission</a> is to make
         <a id="lgbt">LGBTQ+</a>
-        <br />friendly
-        <a id="therapist">therapist</a> and
+        <br />friendly <a id="therapist">therapist</a> and
         <a id="mental health">
           mental health
           <br />resources
-        </a> more readily
+        </a>
+        more readily
         <a id="accessible">accessible</a>
       </p>
     </v-col>
@@ -52,9 +52,7 @@
           <br />
           <h3>
             Search through our
-            <br />selections of LGBTQ+
-            <br />mental health
-            resources
+            <br />selections of LGBTQ+ <br />mental health resources
           </h3>
         </v-col>
         <v-col cols="3">
@@ -74,7 +72,8 @@
 
         <h3>
           Call (800) 273-825 or use these
-          <router-link to="/emergency" id="routerlink">resources</router-link>for help.
+          <router-link to="/emergency" id="routerlink">resources</router-link
+          >for help.
         </h3>
         <br />
         <h3>Contact us</h3>
@@ -89,7 +88,7 @@
 
 <script scoped>
 export default {
-  name: "Footer"
+  name: "Footer",
 };
 </script>
 

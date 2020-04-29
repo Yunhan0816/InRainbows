@@ -7,15 +7,11 @@
 
     <v-card class="mx-auto" outlined id="filtercard">
       <v-card-title style="color: #3b3b3b">
-        <v-spacer></v-spacer>Personalize therapists
-        <br />based on your preferences
+        <v-spacer></v-spacer>Personalize therapists <br />based on your
+        preferences
         <v-spacer></v-spacer>
       </v-card-title>
-      <!-- INSURANCE filter -->
-      <!-- <div
-        class="child-two"
-        v-show="insuranceModal === true"
-      >Find therapists who accept your insurance!</div>-->
+
       <v-tooltip top>
         <template v-slot:activator="{ on }">
           <v-btn
@@ -36,7 +32,12 @@
       <v-card v-if="insurance == true">
         <div class="col">
           <div v-for="ins in insuranceList" :key="ins">
-            <input type="checkbox" :id="ins" :value="ins" v-model="checkedInsurance" />
+            <input
+              type="checkbox"
+              :id="ins"
+              :value="ins"
+              v-model="checkedInsurance"
+            />
             <label :for="ins">{{ ins }}</label>
           </div>
           <br />
@@ -62,7 +63,12 @@
       <v-card v-if="payby == true">
         <div class="col">
           <div v-for="pay in paybyList" :key="pay">
-            <input type="checkbox" :id="pay" :value="pay" v-model="checkedPayby" />
+            <input
+              type="checkbox"
+              :id="pay"
+              :value="pay"
+              v-model="checkedPayby"
+            />
             <label :for="pay">{{ pay }}</label>
           </div>
           <br />
@@ -78,12 +84,19 @@
       <!-- COMMUNITY filter -->
       <v-tooltip top>
         <template v-slot:activator="{ on }">
-          <v-btn v-on="on" rounded @click="showCommunities" class="filterbutton">
+          <v-btn
+            v-on="on"
+            rounded
+            @click="showCommunities"
+            class="filterbutton"
+          >
             Communities
             <i class="fas fa-arrow-down"></i>
           </v-btn>
         </template>
-        <span>Find therapists who ally with your sexualities and communities</span>
+        <span
+          >Find therapists who ally with your sexualities and communities</span
+        >
       </v-tooltip>
       <br />
       <br />
@@ -91,7 +104,12 @@
       <v-card v-if="communities == true">
         <div class="col">
           <div v-for="com in communityList" :key="com">
-            <input type="checkbox" :id="com" :value="com" v-model="checkedCommunities" />
+            <input
+              type="checkbox"
+              :id="com"
+              :value="com"
+              v-model="checkedCommunities"
+            />
             <label :for="com">{{ com }}</label>
             <br />
 
@@ -108,7 +126,10 @@
       </v-card>
 
       <div style="margin-left:10%; margin-right:10%; margin-bottom: 5%">
-        <v-text-field v-model="placeholder" label="Enter zip code to find therapists near you"></v-text-field>
+        <v-text-field
+          v-model="placeholder"
+          label="Enter zip code to find therapists near you"
+        ></v-text-field>
         <v-btn small @click="applyLocation">
           <i class="fas fa-search"></i>
         </v-btn>
@@ -120,12 +141,12 @@
         <!-- <v-card dark color="primary">{{p.name.first + " " + p.name.last}}</v-card> -->
         <v-card color="white" dark>
           <v-card-title class="headline">
-            {{
-            p.name.first + " " + p.name.last
-            }}
+            {{ p.name.first + " " + p.name.last }}
           </v-card-title>
           <v-card-text>
-            <div class="normaltext">{{ p.address.city + ", " + p.address.state }}</div>
+            <div class="normaltext">
+              {{ p.address.city + ", " + p.address.state }}
+            </div>
             <!-- </v-card-text> -->
             <!-- <v-card-text> -->
             <b id="card-text">Title:</b>
@@ -140,7 +161,11 @@
     <button :disabled="pageNumber === 0" @click="prevPage">
       <v-icon>fas fa-arrow-left</v-icon>
     </button>
-    <button :disabled="pageNumber >= pageCount - 1" @click="nextPage" style="float:right">
+    <button
+      :disabled="pageNumber >= pageCount - 1"
+      @click="nextPage"
+      style="float:right"
+    >
       <v-icon>fas fa-arrow-right</v-icon>
     </button>
   </v-container>
@@ -157,8 +182,8 @@ export default {
     size: {
       type: Number,
       required: false,
-      default: 4
-    }
+      default: 4,
+    },
   },
   data() {
     return {
@@ -177,7 +202,7 @@ export default {
         "Sex Worker Allied",
         "Intersex Allied",
         "Non-Binary Allied",
-        "Cancer"
+        "Cancer",
       ],
       insuranceList: [
         "BlueCross BlueShield",
@@ -187,7 +212,7 @@ export default {
         "Tufts",
         "Tufts PPO",
         "Aetna PPO",
-        "Harvard Pilgrim"
+        "Harvard Pilgrim",
       ],
       therapist: [],
       insuranceModal: false,
@@ -197,7 +222,7 @@ export default {
       communities: false,
       checkedCommunities: [],
       checkedPayby: [],
-      checkedInsurance: []
+      checkedInsurance: [],
     };
   },
   methods: {
@@ -255,7 +280,7 @@ export default {
     async getTherapist() {
       let snapshot = await db.collection("therapists").get();
       let therapist = [];
-      snapshot.forEach(doc => {
+      snapshot.forEach((doc) => {
         let appData = doc.data();
         appData.id = doc.id;
         therapist.push(appData);
@@ -275,12 +300,12 @@ export default {
     },
     moreInfo(therapist) {
       this.$emit("moreInfo", therapist);
-    }
+    },
   },
   computed: {
     selectedTherapistC: function() {
       return this.therapist.filter(function(therapy) {
-        let intersection = therapy.communities.filter(x =>
+        let intersection = therapy.communities.filter((x) =>
           this.checkedCommunities.includes(x)
         );
         console.log(intersection);
@@ -295,7 +320,7 @@ export default {
     },
     selectedTherapistP: function() {
       return this.therapist.filter(function(therapy) {
-        let intersection = therapy.payBy.filter(x =>
+        let intersection = therapy.payBy.filter((x) =>
           this.checkedPayby.includes(x)
         );
         console.log(intersection);
@@ -310,7 +335,7 @@ export default {
     },
     selectedTherapistI: function() {
       return this.therapist.filter(function(therapy) {
-        let intersection = therapy.insurance.filter(x =>
+        let intersection = therapy.insurance.filter((x) =>
           this.checkedInsurance.includes(x)
         );
         console.log(intersection);
@@ -340,8 +365,8 @@ export default {
       if (this.$vuetify.breakpoint.mdAndUp) binding.column = true;
 
       return binding;
-    }
-  }
+    },
+  },
 };
 </script>
 

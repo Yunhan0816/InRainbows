@@ -1,21 +1,29 @@
 <template>
   <v-container>
     <v-card class="overflow-hidden">
-      <v-sheet id="scrolling-techniques-7" class="overflow-y-auto" max-height="800">
+      <v-sheet
+        id="scrolling-techniques-7"
+        class="overflow-y-auto"
+        max-height="800"
+      >
         <Appbar />
 
         <v-parallax
           height="580"
           src="https://images.unsplash.com/photo-1553242072-345b34e7b55b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=968&q=80"
         >
-          <div class="layer"></div>>
+          <div class="layer"></div>
+          >
           <br />
           <br />
           <br />
           <br />
           <br />
 
-          <v-container class="card" style="height: 800px; max-width: 550px; margin-right:50%">
+          <v-container
+            class="card"
+            style="height: 800px; max-width: 550px; margin-right:50%"
+          >
             <v-card class="mx-auto" id="roundedcard">
               <v-list-item three-line>
                 <v-list-item-content>
@@ -55,11 +63,6 @@
               <!-- </v-card-actions> -->
             </v-card>
           </v-container>
-          <!-- <v-footer padless>
-          <v-col class="text-center" cols="12">
-            {{ new Date().getFullYear() }} — <strong>In Rainbows</strong>
-          </v-col>
-          </v-footer>-->
         </v-parallax>
         <Footer />
       </v-sheet>
@@ -71,15 +74,15 @@ import Appbar from "../components/Appbar";
 import Footer from "../components/footer";
 export default {
   props: {
-    source: String
+    source: String,
   },
   data: () => ({
-    drawer: null
+    drawer: null,
   }),
   components: {
     Appbar,
-    Footer
-  }
+    Footer,
+  },
 };
 </script>
 <style scoped>
