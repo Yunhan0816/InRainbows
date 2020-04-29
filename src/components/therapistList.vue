@@ -127,7 +127,7 @@
 
       <div style="margin-left:10%; margin-right:10%; margin-bottom: 5%">
         <v-text-field
-          v-model="placeholder"
+          v-model="userZipcode"
           label="Enter zip code to find therapists near you"
         ></v-text-field>
         <v-btn small @click="applyLocation">
@@ -172,11 +172,16 @@
 </template>
 
 <script>
+import gmapsInit from "../gmaps";
+
 import { db } from "@/main";
 export default {
   name: "TherapistList",
   async mounted() {
     this.getTherapist();
+    const google = await gmapsInit();
+    this.google = google;
+    this.geocoder = new google.maps.Geocoder();
   },
   props: {
     size: {
@@ -187,6 +192,9 @@ export default {
   },
   data() {
     return {
+      geocoder: Object,
+
+      google: Object,
       paybyList: ["Cash", "Check", "Visa", "PayPal", "Health Savings Account"],
       communityList: [
         "HIV / AIDS Allied",
@@ -214,6 +222,10 @@ export default {
         "Aetna PPO",
         "Harvard Pilgrim",
       ],
+      userZipcode: "",
+      userLat: "",
+      userLng: "",
+
       therapist: [],
       insuranceModal: false,
       pageNumber: 0,
@@ -269,7 +281,13 @@ export default {
       alert("Succeessfully applied community preferences!");
     },
     applyLocation() {
+      this.userLat = this.zipcodeToLat;
+      this.userLng = this.zipcodeToLng;
       console.log("applying zip code");
+      console.log(this.userLat);
+      console.log(this.userLng);
+
+      alert("Successfully applied location preferences!");
     },
     nextPage() {
       this.pageNumber++;
@@ -303,6 +321,47 @@ export default {
     },
   },
   computed: {
+    zipcodeToLat: function() {
+      var zipcode = this.userZipcode;
+      var lat = "";
+      var address = zipcode;
+      this.geocoder.geocode({ address: "zipcode " + address }, function(
+        results,
+        status
+      ) {
+        if (status == this.google.maps.GeocoderStatus.OK) {
+          lat = results[0].geometry.location.lat();
+          console.log("status is OK");
+          console.log("Lattitue is:");
+          console.log(lat);
+        }
+      });
+
+      return lat;
+    },
+    zipcodeToLng: function() {
+      var zipcode = this.userZipcode;
+      var lng = "";
+      var address = zipcode;
+      this.geocoder.geocode({ address: "zipcode " + address }, function(
+        results,
+        status
+      ) {
+        if (status == this.google.maps.GeocoderStatus.OK) {
+          lng = results[0].geometry.location.lng();
+          console.log("Longtitue is:");
+          console.log(lng);
+        }
+      });
+      console.log(lng);
+      return lng;
+    },
+
+    locationFilteredTherapist: function() {
+      console.log("filtering location");
+      return this.therapist;
+      // return this.therapist.filter(function(therapy) {});
+    },
     selectedTherapistC: function() {
       return this.therapist.filter(function(therapy) {
         let intersection = therapy.communities.filter((x) =>
