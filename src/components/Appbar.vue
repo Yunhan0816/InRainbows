@@ -13,7 +13,7 @@
       contain
     ></v-img>
     <div>
-      <router-link :to="{ name: 'home' }" id="routerlink">
+      <router-link :to="{ name: 'home' }" id="titlelink">
         <v-toolbar-title id="title">InRainbows LGBT</v-toolbar-title>
       </router-link>
     </div>
@@ -84,5 +84,19 @@ export default {
   /* padding: 15px 20px; */
   position: relative;
   text-decoration: none;
+}
+#titlelink {
+  color: #fff;
+  text-decoration: none;
+
+  display: inline-block;
+  /* padding: 15px 20px; */
+  position: relative;
+  text-decoration: none;
+}
+@media only screen and (max-width: 600px) {
+  #routerlink {
+    display: none;
+  }
 }
 </style>

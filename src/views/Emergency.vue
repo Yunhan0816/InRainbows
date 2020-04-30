@@ -1,7 +1,11 @@
 <template>
   <v-container>
     <v-card class="overflow-hidden">
-      <v-sheet id="scrolling-techniques-7" class="overflow-y-auto" max-height="800">
+      <v-sheet
+        id="scrolling-techniques-7"
+        class="overflow-y-auto"
+        max-height="800"
+      >
         <Appbar />
 
         <v-container>
@@ -9,7 +13,11 @@
             <v-card class="mx-auto" max-width="1200">
               <v-container fluid>
                 <v-row dense>
-                  <v-col v-for="card in cards" :key="card.title" :cols="card.flex">
+                  <v-col
+                    v-for="card in cards"
+                    :key="card.title"
+                    :cols="card.flex"
+                  >
                     <v-card>
                       <v-img
                         :src="card.src"
@@ -17,7 +25,10 @@
                         gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
                         height="300px"
                       >
-                        <v-card-title v-text="card.title" id="cardtitle"></v-card-title>
+                        <v-card-title
+                          v-text="card.title"
+                          id="cardtitle"
+                        ></v-card-title>
                       </v-img>
                     </v-card>
                   </v-col>
@@ -25,7 +36,7 @@
 
                 <v-row>
                   <v-container id="headline">
-                    <p style="font-size: 25px;font-weight: 400;">
+                    <p style=";">
                       If you or anyone you know are in crisis or in danger
                       <br />Please use the following resources to get immediate
                       help.
@@ -129,7 +140,7 @@ import Appbar from "../components/Appbar";
 export default {
   name: "Emergency",
   components: {
-    Appbar
+    Appbar,
     // Footer
   },
   data: () => ({
@@ -139,10 +150,10 @@ export default {
         align: "center",
         src:
           "https://images.unsplash.com/photo-1564097060855-4b930b5f1d7d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
-        flex: 12
-      }
-    ]
-  })
+        flex: 12,
+      },
+    ],
+  }),
 };
 </script>
 <style scoped>
@@ -160,6 +171,8 @@ export default {
   align-items: center;
 }
 #headline {
+  font-size: 25px;
+  font-weight: 400;
   text-align: center;
   color: #434343;
 }
@@ -180,5 +193,10 @@ export default {
 }
 #footername {
   color: navy;
+}
+@media only screen and (max-width: 600px) {
+  #headline {
+    font-size: 80%;
+  }
 }
 </style>

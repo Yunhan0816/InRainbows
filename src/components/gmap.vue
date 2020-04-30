@@ -1,4 +1,3 @@
-  
 <template>
   <v-container id="map">
     <div class="googleMap" />
@@ -11,7 +10,7 @@ export default {
   name: "gmap",
   props: {
     mapTherapist: Array,
-    highlight: Array
+    highlight: Array,
   },
   data() {
     return {
@@ -22,7 +21,7 @@ export default {
       marker2: Object,
       marker3: Object,
       marker4: Object,
-      markers: []
+      markers: [],
     };
   },
   methods: {
@@ -137,7 +136,7 @@ export default {
           }
         }
       );
-    }
+    },
   },
   async mounted() {
     try {
@@ -160,19 +159,19 @@ export default {
             map.setCenter(results[0].geometry.location);
             this.marker1 = new google.maps.Marker({
               map: map,
-              position: results[0].geometry.location
+              position: results[0].geometry.location,
             });
             this.marker2 = new google.maps.Marker({
               map: map,
-              position: results[0].geometry.location
+              position: results[0].geometry.location,
             });
             this.marker3 = new google.maps.Marker({
               map: map,
-              position: results[0].geometry.location
+              position: results[0].geometry.location,
             });
             this.marker4 = new google.maps.Marker({
               map: map,
-              position: results[0].geometry.location
+              position: results[0].geometry.location,
             });
           } else {
             console.log(status);
@@ -198,8 +197,8 @@ export default {
     },
     highlight: function() {
       this.updateHighlight();
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -219,5 +218,10 @@ body {
 }
 #map {
   max-height: 400px;
+}
+@media only screen and (max-width: 600px) {
+  #map {
+    max-height: 350px;
+  }
 }
 </style>

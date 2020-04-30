@@ -3,7 +3,7 @@
     <v-col class="whoweare" cols="12" id="whoweareid">
       <br />
       <h1>WHO WE ARE</h1>
-      <p class="aboutustext">
+      <p id="ourmission">
         Our
         <a id="mission">mission</a> is to make
         <a id="lgbt">LGBTQ+</a>
@@ -25,7 +25,7 @@
       <br />
       <v-row>
         <v-col cols="3">
-          <i class="fas fa-map-marker-alt fa-10x" id="mapicon"></i>
+          <i class="fas fa-map-marker-alt" id="mapicon"></i>
           <br />
           <br />
           <br />
@@ -35,7 +35,7 @@
           </h3>
         </v-col>
         <v-col cols="3">
-          <i class="fas fa-filter fa-10x" id="filtericon"></i>
+          <i class="fas fa-filter" id="filtericon"></i>
           <br />
           <br />
           <br />
@@ -46,7 +46,7 @@
           </h3>
         </v-col>
         <v-col cols="3">
-          <i class="fas fa-search fa-10x" id="searchicon"></i>
+          <i class="fas fa-search" id="searchicon"></i>
           <br />
           <br />
           <br />
@@ -56,7 +56,7 @@
           </h3>
         </v-col>
         <v-col cols="3">
-          <i class="fas fa-user-md fa-10x" id="doctoricon"></i>
+          <i class="fas fa-user-md " id="doctoricon"></i>
           <br />
           <br />
           <br />
@@ -93,6 +93,9 @@ export default {
 </script>
 
 <style scoped>
+#ourmission {
+  font-size: 25px;
+}
 #routerlink {
   padding: 1%;
   color: white;
@@ -114,7 +117,7 @@ export default {
 }
 #aboutustext {
   /* padding: 0.5px; */
-  font-size: 25px;
+  font-size: 50px;
   font-weight: 400;
   padding-bottom: 40px;
 }
@@ -135,15 +138,22 @@ export default {
   color: #434343;
 }
 #mapicon {
+  font-size: 300%;
+
   color: #cc0000;
 }
 #filtericon {
+  font-size: 300%;
+
   color: #dd4f1a;
 }
 #searchicon {
+  font-size: 300%;
+
   color: #6aa84f;
 }
 #doctoricon {
+  font-size: 300%;
   color: #674ea7;
 }
 #subtitle {
@@ -152,17 +162,17 @@ export default {
 }
 @media only screen and (max-width: 600px) {
   #filtericon {
-    font-size: 80%;
+    font-size: 90%;
   }
   #mapicon {
-    font-size: 80%;
+    font-size: 90%;
   }
   #searchicon {
-    font-size: 80%;
+    font-size: 90%;
   }
 
   #doctoricon {
-    font-size: 80%;
+    font-size: 90%;
   }
   .steps {
     font-size: 80%;
@@ -174,7 +184,10 @@ export default {
     font-size: 95%;
   }
   .whoweare {
-    font-size: 80%;
+    font-size: 50%;
+  }
+  #ourmission {
+    font-size: 20px;
   }
 }
 </style>

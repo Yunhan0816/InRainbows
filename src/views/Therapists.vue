@@ -24,7 +24,7 @@
               <gmap :mapTherapist="mapTherapist" :highlight="therapist" />
             </v-row>
             <v-row>
-              <moreInfo :message="therapist" />
+              <moreInfo id="moreinfo" :message="therapist" />
             </v-row>
           </v-col>
         </v-row>
@@ -87,6 +87,9 @@ export default {
 </style>
 
 <style scoped>
+#mapsection {
+  max-height: 400px;
+}
 #routerlink {
   padding: 1%;
   color: white;
@@ -101,5 +104,7 @@ export default {
 }
 #footername {
   color: navy;
+}
+@media only screen and (max-width: 600px) {
 }
 </style>

@@ -26,12 +26,9 @@
           >
             <v-card class="mx-auto" id="roundedcard">
               <v-list-item three-line>
-                <v-list-item-content id="connectwith">
-                  <div class="overline mb-3"></div>
-                  <v-list-item-title
-                    class="mb-1"
-                    style=" font-weight:bold; color: #434343;margin: 10px"
-                  >
+                <v-list-item-content>
+                  <div class="overline mb-3" id="tagline"></div>
+                  <v-list-item-title class="mb-1" id="connectwith">
                     Connect with LGBTQ+ friendly
                     <br />therapists near you
                   </v-list-item-title>
@@ -99,7 +96,10 @@ export default {
   color: #3c78d8;
 }
 #connectwith {
-  font-size: 25px;
+  font-size: 30px;
+  font-weight: bold;
+  color: #434343;
+  margin: 10px;
 }
 .layer {
   background-color: rgba(239, 240, 241, 0.5);
@@ -131,7 +131,7 @@ export default {
 }
 @media only screen and (max-width: 600px) {
   #connectwith {
-    font-size: 80%;
+    font-size: 90%;
   }
   .text {
     font-size: 90%;

@@ -136,31 +136,33 @@
         </v-btn>
       </div>
     </v-card>
+    <v-col v-for="p in paginatedData" :key="p.name">
+      <v-layout v-bind="binding">
+        <v-list>
+          <!-- <v-card dark color="primary">{{p.name.first + " " + p.name.last}}</v-card> -->
+          <v-card color="white" dark style="height: 100%; width: 100%">
+            <v-card-title id="headline">
+              {{ p.name.first + " " + p.name.last }}
+            </v-card-title>
+            <v-card-text>
+              <div class="normaltext">
+                {{ p.address.city + ", " + p.address.state }}
+              </div>
+              <!-- </v-card-text> -->
+              <!-- <v-card-text> -->
+              <b id="card-text">Title:</b>
+              <div class="normaltext">{{ parseArr(p.titles) }}</div>
+            </v-card-text>
+            <v-card-actions>
+              <v-btn id="moreinfobtn" rounded v-on:click="moreInfo(p)"
+                >More Info</v-btn
+              >
+            </v-card-actions>
+          </v-card>
+        </v-list>
+      </v-layout>
+    </v-col>
 
-    <v-layout v-bind="binding">
-      <v-card v-for="p in paginatedData" :key="p.name">
-        <!-- <v-card dark color="primary">{{p.name.first + " " + p.name.last}}</v-card> -->
-        <v-card color="white" dark>
-          <v-card-title id="headline">
-            {{ p.name.first + " " + p.name.last }}
-          </v-card-title>
-          <v-card-text>
-            <div class="normaltext">
-              {{ p.address.city + ", " + p.address.state }}
-            </div>
-            <!-- </v-card-text> -->
-            <!-- <v-card-text> -->
-            <b id="card-text">Title:</b>
-            <div class="normaltext">{{ parseArr(p.titles) }}</div>
-          </v-card-text>
-          <v-card-actions>
-            <v-btn id="moreinfobtn" rounded v-on:click="moreInfo(p)"
-              >More Info</v-btn
-            >
-          </v-card-actions>
-        </v-card>
-      </v-card>
-    </v-layout>
     <button :disabled="pageNumber === 0" @click="prevPage">
       <v-icon>fas fa-arrow-left</v-icon>
     </button>
