@@ -18,18 +18,14 @@ Firebase, VueJS, and JavaScript.
 <br>
 
 ### Features Completed
-- Centralized Therapist List<br>
+- **Centralized Therapist List**<br>
  Aggregated therapist resources in Boston
- <br>
- - Filter by preferences<br>
+ - **Filter by preferences**<br>
    Implemented filter algorithms to help users personalize the therapist list based on their insurance, payment method, sexuality and identity, as well as their location.
-<br>
-- Interactive Map View
+- **Interactive Map View**<br>
 Populated all the therapist office locations on a Google Map with interactive markers.
-<br>
--Emergency Resources
+- **Emergency Resources**<br>
 Provided users with emergency resources including suicide prevention, translife hotline, domestic violence hotline, etc. 
-<br>
 
 ### Future Features 
 - Give “LGBT approved” review to therapists<br>
@@ -42,16 +38,16 @@ LGBT community and events
 To solve the problem of social isolation, denial from the self and the family, we believe it is crucial for the LGBTQ+ youth to have an easy way of finding peer support and professional counselors to connect with.
 
 ### Pivot and Insights
-Originally, our MVP is to build a web app for LGBT youths to access nearby therapists that are LGBT specialized. From user testing and interviewing, we found out that finance is a crucial part of finding the therapist. Therefore, we added insurance, payment method, and other preferences filters to our website. We also found that peer support was vital to creating an overall positive experience and mental health journey. 
+Originally, our MVP is to build a web app for LGBT youths to access nearby therapists that are LGBT specialized. From user testing and interviewing, we found out that finance is a crucial part of finding the therapist. Therefore, we added insurance, payment method, and other preferences filters to our website. We also found that peer support was vital to creating an overall positive experience and mental health journey. <br>
 
 User Login was another original feature we had planned to implement at first but decided not to. We found that the login feature could be a risk, as our audience is unique in that their personal information is particularly sensitive and might not feel entirely comfortable with providing personal information.
 
 
-### Ethics Audit
-Potential risks in future implementation: 
-If we are planning to implement an optional login feature, we have to make sure the user’s personal information is under protection: 
-We will also need to have a Fair Processing Policy that explains why we will take data from our users and how we are going to be using it (in layman’s terms)
+## Ethics Audit
+**Potential risks in future implementation**: <br>
+If we are planning to implement an optional login feature, we have to make sure the user’s personal information is under protection. <br>
+We will also need to have a Fair Processing Policy that explains why we will take data from our users and how we are going to be using it.
 
-### Project Member: 
-Tech: Hannah (Yunhan) Huang (CS 2021), Zhenghui Wang (CS 2022)<br>
-UX Design: Emme Enojado (Neuroscience & Visual Art 2021) 
+## Project Member: 
+**Tech**: Hannah (Yunhan) Huang (CS 2021), Zhenghui Wang (CS 2022)<br>
+**UX Design**: Emme Enojado (Neuroscience & Visual Art 2021) 
