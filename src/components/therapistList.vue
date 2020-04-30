@@ -3,10 +3,10 @@
     <!-- <v-card class="mx-auto" outlined>
       <v-list-item-title class="headline mb-1">Therapists in Boston</v-list-item-title>
     </v-card>-->
-    <h2 style="color:#3b3b3b ">Therapists in Boston</h2>
+    <h2 id="title" style="color:#3b3b3b ">Therapists in Boston</h2>
 
     <v-card class="mx-auto" outlined id="filtercard">
-      <v-card-title style="color: #3b3b3b">
+      <v-card-title id="findtherapists" style="color: #3b3b3b">
         <v-spacer></v-spacer>Personalize therapists <br />based on your
         preferences
         <v-spacer></v-spacer>
@@ -127,6 +127,7 @@
 
       <div style="margin-left:10%; margin-right:10%; margin-bottom: 5%">
         <v-text-field
+          id="zipcodeplace"
           v-model="userZipcode"
           label="Enter zip code to find therapists near you"
         ></v-text-field>
@@ -137,10 +138,10 @@
     </v-card>
 
     <v-layout v-bind="binding">
-      <v-flex v-for="p in paginatedData" :key="p.name">
+      <v-card v-for="p in paginatedData" :key="p.name">
         <!-- <v-card dark color="primary">{{p.name.first + " " + p.name.last}}</v-card> -->
         <v-card color="white" dark>
-          <v-card-title class="headline">
+          <v-card-title id="headline">
             {{ p.name.first + " " + p.name.last }}
           </v-card-title>
           <v-card-text>
@@ -153,10 +154,12 @@
             <div class="normaltext">{{ parseArr(p.titles) }}</div>
           </v-card-text>
           <v-card-actions>
-            <v-btn rounded v-on:click="moreInfo(p)">More Info</v-btn>
+            <v-btn id="moreinfobtn" rounded v-on:click="moreInfo(p)"
+              >More Info</v-btn
+            >
           </v-card-actions>
         </v-card>
-      </v-flex>
+      </v-card>
     </v-layout>
     <button :disabled="pageNumber === 0" @click="prevPage">
       <v-icon>fas fa-arrow-left</v-icon>
@@ -213,7 +216,7 @@ export default {
         "Cancer",
       ],
       insuranceList: [
-        "BlueCross BlueShield",
+        "BlueCross and BlueShield",
         "Cigna",
         "Aetna",
         "Anthem",
@@ -449,16 +452,41 @@ export default {
 .downarrow {
   padding-left: 3px;
 }
-.headline {
+#headline {
   color: black;
 }
 .normaltext {
   color: #3b3b3b;
 }
 .filterbutton {
+  font-size: 70%;
   color: #3b3b3b;
 }
 .mx-auto {
   text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .filterbutton {
+    font-size: 50%;
+  }
+  #headline {
+    font-size: 60%;
+  }
+  .normaltext {
+    font-size: 70%;
+  }
+  #findtherapists {
+    font-size: 60%;
+  }
+  #zipcodeplace {
+    font-size: 30%;
+  }
+  #moreinfobtn {
+    font-size: 50%;
+  }
+  #title {
+    font-size: 70%;
+  }
 }
 </style>

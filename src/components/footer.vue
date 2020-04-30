@@ -3,7 +3,7 @@
     <v-col class="whoweare" cols="12" id="whoweareid">
       <br />
       <h1>WHO WE ARE</h1>
-      <p id="aboutustext">
+      <p class="aboutustext">
         Our
         <a id="mission">mission</a> is to make
         <a id="lgbt">LGBTQ+</a>
@@ -18,7 +18,7 @@
     </v-col>
     <v-col class="howitworks" cols="12" id="worksid">
       <br />
-      <h1>HOW IT WORKS</h1>
+      <h1 id="howitworks">HOW IT WORKS</h1>
       <br />
       <p id="subtitle">Start your journey in just a few steps</p>
 
@@ -29,7 +29,7 @@
           <br />
           <br />
           <br />
-          <h3>
+          <h3 class="steps">
             Enter your
             <br />location
           </h3>
@@ -40,7 +40,7 @@
           <br />
           <br />
 
-          <h3>
+          <h3 class="steps">
             Apply filters to fit your
             <br />preferences
           </h3>
@@ -50,7 +50,7 @@
           <br />
           <br />
           <br />
-          <h3>
+          <h3 class="steps">
             Search through our
             <br />selections of LGBTQ+ <br />mental health resources
           </h3>
@@ -60,7 +60,7 @@
           <br />
           <br />
           <br />
-          <h3>Find your therapist!</h3>
+          <h3 class="steps">Find your therapist!</h3>
         </v-col>
       </v-row>
       <br />
@@ -149,5 +149,32 @@ export default {
 #subtitle {
   font-size: 25px;
   font-weight: 400;
+}
+@media only screen and (max-width: 600px) {
+  #filtericon {
+    font-size: 80%;
+  }
+  #mapicon {
+    font-size: 80%;
+  }
+  #searchicon {
+    font-size: 80%;
+  }
+
+  #doctoricon {
+    font-size: 80%;
+  }
+  .steps {
+    font-size: 80%;
+  }
+  #subtitle {
+    font-size: 90%;
+  }
+  #howitworks {
+    font-size: 95%;
+  }
+  .whoweare {
+    font-size: 80%;
+  }
 }
 </style>

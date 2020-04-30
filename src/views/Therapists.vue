@@ -20,8 +20,12 @@
           </v-col>
 
           <v-col cols="7">
-            <gmap :mapTherapist="mapTherapist" :highlight="therapist" />
-            <moreInfo :message="therapist" />
+            <v-row>
+              <gmap :mapTherapist="mapTherapist" :highlight="therapist" />
+            </v-row>
+            <v-row>
+              <moreInfo :message="therapist" />
+            </v-row>
           </v-col>
         </v-row>
       </v-sheet>

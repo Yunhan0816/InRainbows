@@ -13,6 +13,16 @@ Vue.use(AsyncComputed);
 import vuetify from "./plugins/vuetify";
 import firebase from "firebase";
 import "firebase/auth";
+import VueMq from "vue-mq";
+
+Vue.use(VueMq, {
+  breakpoints: {
+    mobile: 450,
+    tablet: 900,
+    laptop: 1250,
+    desktop: Infinity,
+  },
+});
 
 Vue.config.productionTip = false;
 var app = null;
