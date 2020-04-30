@@ -319,26 +319,42 @@ export default {
     moreInfo(therapist) {
       this.$emit("moreInfo", therapist);
     },
+    callGeocoder(zipcode) {
+      var address = zipcode;
+      this.geocoder.geocode(
+        {
+          address: "zipcode" + address,
+        },
+        async function(results) {
+          return await results[0].geometry.location.lat();
+        }
+      );
+    },
   },
-  computed: {
-    zipcodeToLat: function() {
+  asyncComputed: {
+    async zipcodeToLat() {
       var zipcode = this.userZipcode;
       var lat = "";
-      var address = zipcode;
-      this.geocoder.geocode({ address: "zipcode " + address }, function(
-        results,
-        status
-      ) {
-        if (status == this.google.maps.GeocoderStatus.OK) {
-          lat = results[0].geometry.location.lat();
-          console.log("status is OK");
-          console.log("Lattitue is:");
-          console.log(lat);
-        }
-      });
-
+      // var address = zipcode;
+      lat = await this.callGeocoder(zipcode);
+      console.log(lat);
       return lat;
+      // this.geocoder.geocode({ address: "zipcode " + address },async function(
+      //   results,
+      //   status
+      // ) {
+      //   if (status == this.google.maps.GeocoderStatus.OK) {
+      //     lat = await results[0].geometry.location.lat();
+      //     console.log("status is OK");
+      //   }
+      // });
+      // let result = lat;
+      // console.log("Lattitue is:");
+      // console.log(lat);
+      // return result;
     },
+  },
+  computed: {
     zipcodeToLng: function() {
       var zipcode = this.userZipcode;
       var lng = "";

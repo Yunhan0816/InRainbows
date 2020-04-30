@@ -12,6 +12,18 @@ export default {
   },
   data: () => ({
     //
-  })
+  }),
 };
 </script>
+<style scoped>
+@import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
+
+html,
+body {
+  font-family: "Lato", sans-serif;
+}
+
+#app {
+  font-family: "Lato", sans-serif;
+}
+</style>

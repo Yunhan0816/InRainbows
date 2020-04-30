@@ -1,12 +1,14 @@
 new Vue({
   router,
   vuetify,
-  render: h => h(App)
+  render: (h) => h(App),
 }).$mount("#app");
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import "./firebase/init.js";
+import AsyncComputed from "vue-async-computed";
+Vue.use(AsyncComputed);
 
 import vuetify from "./plugins/vuetify";
 import firebase from "firebase";
@@ -21,7 +23,7 @@ firebase.auth().onAuthStateChanged(async () => {
       router,
       // store,
       vuetify,
-      render: h => h(App)
+      render: (h) => h(App),
     }).$mount("#app");
   }
 });
